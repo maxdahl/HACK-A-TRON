@@ -6,6 +6,7 @@ import ProjectCard from "@pages/projectCard/ProjectCard";
 import { RecoilRoot } from "recoil";
 
 import "./App.css";
+
 library.add(fas);
 function App() {
   return (
