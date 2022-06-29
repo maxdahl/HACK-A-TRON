@@ -1,0 +1,44 @@
+a {
+  text-decoration: none;
+}
+.project-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  box-sizing: border-box;
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 90%;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  margin-top: 25px;
+}
+.header-title {
+  width: 80%;
+  display: flex;
+  justify-content: center;
+  border-bottom: 1px solid #ccc;
+  color: #ccc;
+  padding-bottom: 10px;
+}
+.button-container {
+  display: flex;
+  justify-content: flex-end;
+  width: 80%;
+}
+.button-apply {
+  color: #fff;
+  background-color: #0069d9;
+  border-color: #0062cc;
+  border-radius: 10px;
+  font-size: 22px;
+  width: 153px;
+  text-align: center;
+  margin-top: 24px;
+  margin-bottom: 24px;
+  line-height: 52px;
+}
