@@ -1,6 +1,5 @@
 const fs = require("fs");
 const mongoose = require("mongoose");
-const colors = require("colors");
 const dotenv = require("dotenv");
 
 // load env vars
@@ -18,13 +17,13 @@ mongoose.connect(process.env.MONGO_URI, {
 
 // read JSON files
 const users = JSON.parse(
-  fs.readFileSync(`${__dirname}/src/_data/users.json`, "utf-8")
+  fs.readFileSync(`${__dirname}/src/_data/user.json`, "utf-8")
 );
 
 // import into DB
 const importData = async () => {
   try {
-    // await User.create(users);
+    await User.create(users);
 
     console.log("Data Imported...".green.inverse);
     process.exit();

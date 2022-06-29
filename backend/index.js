@@ -1,8 +1,9 @@
 const express = require("express");
 const cors = require("cors");
 const morgan = require("morgan");
-const colors = require("colors");
 const dotenv = require("dotenv");
+// eslint-disable-next-line
+const colors = require("colors");
 
 // load env vars
 dotenv.config();
@@ -31,18 +32,9 @@ connectDB();
 
 const PORT = process.env.PORT || 8000;
 
-const server = app.listen(
+app.listen(
   PORT,
   console.log(
     `Server running in ${process.env.NODE_ENV} mode on port ${PORT}`.yellow
   )
 );
-
-// async function startServer() {
-//   const port = process.env.APP_PORT || 5000;
-//   app.listen(port, () => {
-//     console.info(`Server started on port ${port}`);
-//   });
-// }
-
-// startServer();
