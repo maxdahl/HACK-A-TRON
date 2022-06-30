@@ -1,12 +1,15 @@
 const fs = require("fs");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
+// eslint-disable-next-line
+const colors = require("colors");
 
 // load env vars
 dotenv.config();
 
 // load models
 const User = require("./src/models/User");
+const Project = require("./src/models/Project");
 
 // connect to DB
 mongoose.connect(process.env.MONGO_URI, {
@@ -19,11 +22,15 @@ mongoose.connect(process.env.MONGO_URI, {
 const users = JSON.parse(
   fs.readFileSync(`${__dirname}/src/_data/user.json`, "utf-8")
 );
+const projects = JSON.parse(
+  fs.readFileSync(`${__dirname}/src/_data/project.json`, "utf-8")
+);
 
 // import into DB
 const importData = async () => {
   try {
-    await User.create(users);
+    // await User.create(users);
+    await Project.create(projects);
 
     console.log("Data Imported...".green.inverse);
     process.exit();
