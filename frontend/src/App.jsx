@@ -10,7 +10,7 @@ import projectsAtom from "@recoil/projects";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { RecoilRoot } from "recoil";
 import "./App.css";
-
+import ApplyToProjectModal from "@components/ApplyToProjectModal/ApplyToProjectModal";
 import dummyData from "./dummyData.json";
 
 const initializeData = ({ set }) => {
@@ -29,6 +29,10 @@ function App() {
           <Route path="/project" element={<ProjectCard />} />
           <Route path="/addproject" element={<AddProject />} />
           <Route path="/navbar" element={<Navbar />} />
+          <Route
+            path="/ApplyToProjectModal"
+            element={<ApplyToProjectModal />}
+          />
         </Routes>
       </Router>
     </RecoilRoot>
