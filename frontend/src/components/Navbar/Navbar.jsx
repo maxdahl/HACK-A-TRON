@@ -59,12 +59,11 @@ export default function Navbar() {
           style={{ padding: 0 }}
         >
           <Grid item className="grid-item-a" xs={6} textAlign="center">
-            <a
-              href="/users"
-              style={{ width: "100%", backgroundColor: "primary" }}
-            >
-              Users
-            </a>
+            <Link to="/users">
+              <Button id="nav-button" sx={{ width: "100%", color: "#F0F0F0" }}>
+                Users
+              </Button>
+            </Link>
           </Grid>
           <Grid item xs={6} className="grid-item-b" textAlign="center">
             <Link to="/projects">

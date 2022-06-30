@@ -1,16 +1,17 @@
 import AddProject from "@components/AddProject/AddProject";
-import ApplyToProjectModal from "@components/ApplyToProjectModal/ApplyToProjectModal";
 import Login from "@components/Login/Login";
 import Navbar from "@components/Navbar/Navbar";
 import ProjectsTable from "@components/ProjectsTable";
 import Register from "@components/Register/Register";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { fas } from "@fortawesome/free-solid-svg-icons";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import ApplyToProjectModal from "@components/ApplyToProjectModal/ApplyToProjectModal";
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { RecoilRoot } from "recoil";
 
-import PageHeader from "@components/PageLayout/PageHeader";
 import ProjectCard from "@pages/projectCard/ProjectCard";
+import PageHeader from "@components/PageLayout/PageHeader";
 
 // import projectsAtom from "@recoil/projects";
 
@@ -23,6 +24,20 @@ import "./App.css";
 
 library.add(fas);
 function App() {
+  let project = {
+    name: "hackathon",
+    location: "Berlin",
+    field: "pharmaceutical",
+    progress: 20,
+    techStack: ["react", "node", "typescript"],
+    partners: ["IBM", "Intel"],
+    status: "string",
+    description: "relational database for all clients",
+    openPositions: ["Developer", "QA"],
+    projectInfo: { Figma: "", Github: "" },
+    startingDate: "1st jan 2022",
+    duration: "5 months",
+  };
   return (
     <RecoilRoot>
       {/* <RecoilRoot initializeState={initializeData}> */}
@@ -32,19 +47,15 @@ function App() {
           <Route path="/" element={<ProjectsTable />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/project" element={<ProjectCard />} />
+          <Route path="/project" element={<ProjectCard project={project} />} />
           <Route path="/addproject" element={<AddProject />} />
           <Route path="/navbar" element={<Navbar />} />
-          <Route path="/newproject" element={<Navbar />} />
-          <Route path="/users" element={<Navbar />} />
-          <Route path="/projects" element={<Navbar />} />
           <Route
             path="/ApplyToProjectModal"
             element={<ApplyToProjectModal />}
           />
         </Routes>
       </Router>
-      <Navbar />
     </RecoilRoot>
   );
 }

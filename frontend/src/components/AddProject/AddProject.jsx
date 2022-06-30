@@ -301,7 +301,7 @@ export default function AddProject() {
   }
   return (
     <Container>
-      <Card sx={{ py: "50px", py: "50px" }}>
+      <Card sx={{ py: "50px" }}>
         <Stepper activeStep={activeStep}>
           {steps.map((label, index) => {
             const stepProps = {};
