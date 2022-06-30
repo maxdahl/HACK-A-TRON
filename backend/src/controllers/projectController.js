@@ -67,7 +67,7 @@ const createProject = asyncHandler(async (req, res, next) => {
 
 // eslint-disable-next-line
 const deleteProject = asyncHandler(async (req, res, next) => {
-  const project = await Project.findByIdAndDelete(req.params.id);
+  await Project.findByIdAndDelete(req.params.id);
 
   res.status(200).json({
     success: true,

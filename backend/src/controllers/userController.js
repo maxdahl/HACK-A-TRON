@@ -64,7 +64,7 @@ const createUser = asyncHandler(async (req, res, next) => {
 
 // eslint-disable-next-line
 const deleteUser = asyncHandler(async (req, res, next) => {
-  const user = await User.findByIdAndDelete();
+  await User.findByIdAndDelete();
 
   res.status(200).json({
     success: true,
