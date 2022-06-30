@@ -1,12 +1,12 @@
-const express = require("express");
-const cors = require("cors");
-const morgan = require("morgan");
 const dotenv = require("dotenv");
-// eslint-disable-next-line
-const colors = require("colors");
 
 // load env vars
 dotenv.config();
+const express = require("express");
+const cors = require("cors");
+const morgan = require("morgan");
+// eslint-disable-next-line
+const colors = require("colors");
 
 const app = express();
 

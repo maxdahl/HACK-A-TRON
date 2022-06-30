@@ -7,19 +7,19 @@ import CardMedia from "@mui/material/CardMedia";
 import Fab from "@mui/material/Fab";
 import Grid from "@mui/material/Grid";
 import Modal from "@mui/material/Modal";
-import Paper from "@mui/material/Paper";
-import { styled } from "@mui/material/styles";
 import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
-import * as React from "react";
+import React from "react";
+import MuiAlert from "@mui/material/Alert";
+
+import Snackbar from "@mui/material/Snackbar";
 
 const floating = {
   margin: 0,
-  top: "auto",
+  top: "50%",
   right: 20,
-  bottom: 20,
+  bottom: 60,
   left: "auto",
-  position: "fixed",
 };
 
 const style = {
@@ -33,30 +33,31 @@ const style = {
   boxShadow: 24,
   p: 4,
 };
-
-export default function BasicModal() {
+const Alert = React.forwardRef(function Alert(props, ref) {
+  return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+});
+export default function ApplyToProjectModal({ project }) {
+  /* SNACK */
+  const [openSnack, setOpenSnack] = React.useState(false);
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+  const handleClickSnack = () => {
+    setOpenSnack(true);
+  };
+  const handleClose = () => {
+    setOpen(false);
+    handleClickSnack();
+  };
 
-  const Item = styled(Paper)(({ theme }) => ({
-    backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
-    ...theme.typography.body2,
-    padding: theme.spacing(1),
-    textAlign: "center",
-    color: theme.palette.text.secondary,
-  }));
+  const handleCloseSnack = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
 
+    setOpenSnack(false);
+  };
   return (
-    <div>
-      <Fab
-        style={floating}
-        color="secondary"
-        aria-label="add"
-        onClick={handleOpen}
-      >
-        <Work />
-      </Fab>
+    <>
       <Modal
         open={open}
         onClose={handleClose}
@@ -73,24 +74,24 @@ export default function BasicModal() {
             />
             <Typography gutterBottom variant="h5" component="div">
               <Grid container spacing={3}>
-                <Grid item xs={6}>
-                  <Item>
-                    <h4>Project Title</h4>
-                  </Item>
+                <Grid item xs={12}>
+                  <h2 style={{ textAlign: "center" }}>{project.name}</h2>
                 </Grid>
-                <Grid item xs={6}>
-                  <Item>
-                    <h6>Open Position: {}</h6>
-                    <h6> Project Lead: {}</h6>
-                  </Item>
+                <Grid item xs={12}>
+                  <h6>
+                    Open Position:{" "}
+                    {project.openPositions.map((position) => {
+                      return `${position} `;
+                    })}
+                  </h6>
+                  <h6> Location: {project.location}</h6>
+                </Grid>
+                <Grid item xs={12}>
+                  <p> {project.description}</p>
                 </Grid>
               </Grid>
             </Typography>
-            <Typography variant="body2" color="text.secondary">
-              lorem ipsum isnt working vjasjsdnsadjvasnsd af fa sfd af ad aa fda
-              fda fdlcsadfdsffgdv csdvsv bfdbgsfbdgnfsdfb cdscas geb t dcsa csa
-              cskca cjklrvcads
-            </Typography>
+            <Typography variant="body2" color="text.secondary" />
             <br />
             <TextField
               id="filled-textarea"
@@ -103,12 +104,41 @@ export default function BasicModal() {
             />
           </CardContent>
           <CardActions>
-            <Button style={{ marginLeft: "460px" }} variant="contained">
+            <Button
+              style={{ marginLeft: "460px" }}
+              variant="contained"
+              onClick={handleClose}
+            >
               Apply
             </Button>
           </CardActions>
         </Card>
       </Modal>
-    </div>
+      <Snackbar
+        open={openSnack}
+        autoHideDuration={6000}
+        onClose={handleCloseSnack}
+        message="Note archived"
+        anchorOrigin={{ vertical: "top", horizontal: "center" }}
+        /* action={action} */
+      >
+        <Alert
+          onClose={handleCloseSnack}
+          severity="success"
+          sx={{ width: "100%" }}
+        >
+          You applied to {project.name} in {project.location}
+        </Alert>
+      </Snackbar>
+
+      <Fab
+        style={floating}
+        color="secondary"
+        aria-label="add"
+        onClick={handleOpen}
+      >
+        <Work />
+      </Fab>
+    </>
   );
 }
