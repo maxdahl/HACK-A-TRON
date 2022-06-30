@@ -1,14 +1,15 @@
+import AddProject from "@components/AddProject/AddProject";
 import Login from "@components/Login/Login";
+import Navbar from "@components/Navbar/Navbar";
+import ProjectsTable from "@components/ProjectsTable";
 import Register from "@components/Register/Register";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { fas } from "@fortawesome/free-solid-svg-icons";
+import ProjectCard from "@pages/ProjectCard/ProjectCard";
+import projectsAtom from "@recoil/projects";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { RecoilRoot } from "recoil";
 import "./App.css";
-import ProjectsTable from "@components/ProjectsTable";
-import ProjectCard from "@pages/ProjectCard/ProjectCard";
-import AddProject from "@components/AddProject/AddProject";
-import projectsAtom from "@recoil/projects";
 
 import dummyData from "./dummyData.json";
 
@@ -27,6 +28,7 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/project" element={<ProjectCard />} />
           <Route path="/addproject" element={<AddProject />} />
+          <Route path="/navbar" element={<Navbar />} />
         </Routes>
       </Router>
     </RecoilRoot>
