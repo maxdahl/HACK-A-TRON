@@ -1,5 +1,6 @@
-// const ErrorResponse = require("../utils/errorResponse");
+const ErrorResponse = require("../utils/errorResponse");
 const asyncHandler = require("../middleware/asyncHandler");
+const sendTokenResponse = require("../utils/sendToken");
 const User = require("../models/User");
 
 // @desc      Get all users
@@ -72,10 +73,74 @@ const deleteUser = asyncHandler(async (req, res, next) => {
   });
 });
 
+// @desc      Register
+// @route     POST /api/v1/users/register
+// @access    Private/Admin
+
+// eslint-disable-next-line
+const registerUser = asyncHandler(async (req, res, next) => {
+  const { firstname, lastname, email, password, role, location, language } =
+    req.body;
+  if (!email || !password) {
+    return next(new ErrorResponse("Please add all fields", 400));
+  }
+
+  // check if user exists
+  const userExists = await User.findOne({ email });
+
+  if (userExists) {
+    return next(new ErrorResponse("Email already in use", 400));
+  }
+
+  // Create user
+  const user = await User.create({
+    firstname,
+    lastname,
+    email,
+    role,
+    password,
+    location,
+    language,
+  });
+  sendTokenResponse(user, 200, res);
+});
+
+// @desc      Login user
+// @route     POST /api/v1/users/login
+// @access    Private/Admin
+
+// eslint-disable-next-line
+const loginUser = asyncHandler(async (req, res, next) => {
+  const { email, password } = req.body;
+
+  // validate email and password
+  if (!email || !password) {
+    return next(new ErrorResponse("please provide an email and password", 400));
+  }
+
+  // check for user email
+  const user = await User.findOne({ email }).select("+password");
+
+  if (!user) {
+    return next(new ErrorResponse("invalid credentials", 401));
+  }
+
+  // check if password matches
+  const isMatch = await user.matchPassword(password); // true or false
+
+  if (!isMatch) {
+    return next(new ErrorResponse("invalid credentials", 401));
+  }
+
+  sendTokenResponse(user, 200, res);
+});
+
 module.exports = {
   getUsers,
   createUser,
   getSingleUser,
   updateUser,
   deleteUser,
+  registerUser,
+  loginUser,
 };

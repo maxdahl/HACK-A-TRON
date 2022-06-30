@@ -1,4 +1,7 @@
+/* eslint-disable */
 const mongoose = require("mongoose");
+const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
 
 const UserSchema = new mongoose.Schema(
   {
@@ -42,14 +45,32 @@ const UserSchema = new mongoose.Schema(
     },
     location: String,
     language: [],
-    projectID: [],
-
-    organization: {
-      // value comes from a put request as response from the frontend once user has created the org
-      type: String,
-    },
+    // projectID: [],
   },
   { timestamps: true }
 );
 
+// encrypt password using bcrypt
+// since we are using save in forgotpassword, this middleware runs and generate error. we manage this with an if statement
+UserSchema.pre("save", async function (next) {
+  if (!this.isModified("password")) {
+    next();
+  }
+  const salt = await bcrypt.genSalt(10);
+  this.password = await bcrypt.hash(this.password, salt);
+});
+
+// sign JWT and return (thta's a method, not a middleware)
+UserSchema.methods.getSignedJwtToken = function () {
+  // since it is a method and not static, we are going to call it on a user and we'll get his userId
+  return jwt.sign({ id: this._id }, process.env.JWT_SECRET, {
+    expiresIn: process.env.JWT_EXPIRE,
+  });
+};
+
+// match user entered password to hashed password in database
+UserSchema.methods.matchPassword = async function (enteredPassword) {
+  // await because bcrypt returns a promise
+  return await bcrypt.compare(enteredPassword, this.password); // enteredPassword that we get from teh body || that's a method called on the actual user in controllers, so we have the hashed password
+};
 module.exports = mongoose.model("User", UserSchema);

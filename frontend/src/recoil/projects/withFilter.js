@@ -1,7 +1,7 @@
 import { selector } from "recoil";
 
 import { withCombinedFilters } from "@recoil/projectsTableFilter";
-import projectsAtom from "./atom";
+import withProgress from "./withProgress";
 
 const isFilterMatch = (value, filters) => {
   const filterArray = Array.isArray(filters) ? filters : [filters];
@@ -22,7 +22,7 @@ const isFilterMatch = (value, filters) => {
 const projectsWithFilter = selector({
   key: "projectsWithFilter",
   get: ({ get }) => {
-    const projects = get(projectsAtom);
+    const projects = get(withProgress);
     const filters = get(withCombinedFilters);
 
     const filterKeys = Object.keys(filters);
@@ -30,7 +30,11 @@ const projectsWithFilter = selector({
 
     const filtered = projects.filter((project) => {
       for (const filterKey of filterKeys) {
-        if (isFilterMatch(project[filterKey], filters[filterKey]) === false)
+        if (filterKey === "name") {
+          if (!project.name.includes(filters.name[0])) return false;
+        } else if (
+          isFilterMatch(project[filterKey], filters[filterKey]) === false
+        )
           return false;
       }
 

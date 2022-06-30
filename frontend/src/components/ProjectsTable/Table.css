@@ -1,3 +1,50 @@
+#backdrop {
+  width: 100%;
+  height: 100%;
+  background: #000;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+ul {
+  list-style-type: none;
+}
+
+#table-container {
+  padding: 15px;
+}
+
+.MuiInputBase-input.MuiOutlinedInput-input {
+  background: #fff;
+  height: 30px;
+  padding: 4px;
+  border-radius: 4px;
+}
+.MuiInputLabel-outlined.MuiFormLabel-root {
+  margin-top: -5px;
+}
+
+.MuiFormLabel-root.MuiInputLabel-root.Mui-focused {
+  display: none;
+}
+
+.MuiTableHead-root {
+  background: rgba(24, 54, 80, 0.7);
+  text-align: center;
+}
+
+.MuiTableCell-root.MuiTableCell-head,
 .MuiTableCell-root.MuiTableCell-body {
-  max-width: 14%;
+  width: 14%;
+  text-align: center;
+  border: 1px solid black;
+}
+.MuiTableRow-root.MuiTableRow-head:first-child
+  .MuiTableCell-root.MuiTableCell-head {
+  border-bottom: none;
+}
+.MuiTableRow-root.MuiTableRow-head:nth-child(2)
+  .MuiTableCell-root.MuiTableCell-head {
+  border-top: none;
 }

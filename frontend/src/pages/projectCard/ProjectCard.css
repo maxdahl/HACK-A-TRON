@@ -7,18 +7,22 @@ a {
   align-items: center;
   width: 100%;
   box-sizing: border-box;
+  color: #666;
+  margin-bottom: 190px;
 }
-.container {
+.container-project-card {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 50%;
+  width: 90%;
   box-sizing: border-box;
-  border: 1px solid #ccc;
   margin-top: 25px;
+  padding-top: 39px;
+  background-color: #fff;
+  box-shadow: rgb(0 0 0 / 35%) 0px 5px 15px;
 }
 .header-title {
-  width: 80%;
+  width: 85%;
   display: flex;
   justify-content: center;
   border-bottom: 1px solid #ccc;
@@ -27,9 +31,24 @@ a {
 }
 .project-description {
   display: flex;
+  width: 100%;
+  box-sizing: border-box;
+  padding-top: 57px;
+}
+.project-description-right,
+.project-description-left {
+  display: flex;
   flex-direction: column;
   justify-items: flex-start;
   width: 67%;
+  color: #666 !important;
+  padding-left: 76px;
+}
+.project-description-left {
+  border-right: 1px solid #666;
+}
+.second {
+  border: none;
 }
 .button-container {
   display: flex;
@@ -41,12 +60,11 @@ a {
   background-color: #e77620;
   border-color: #e77620;
   border-radius: 10px;
-  font-size: 22px;
+  font-size: 19px;
   width: 153px;
   text-align: center;
-  margin-top: 24px;
-  margin-bottom: 24px;
-  line-height: 52px;
+  margin-top: 68px;
+  margin-bottom: 66px;
 }
 .icon-project {
   font-size: 29px;
@@ -56,8 +74,14 @@ p {
   display: flex;
   align-items: center;
   font-weight: bold;
+  color: #666;
+  line-height: 46px;
+  font-size: 20px;
 }
 span {
   padding-left: 7px;
   font-weight: normal;
+}
+.title-project-description {
+  color: #e77620 !important;
 }
