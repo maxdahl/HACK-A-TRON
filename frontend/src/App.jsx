@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import AddProject from "@components/AddProject/AddProject";
 import Login from "@components/Login/Login";
 import Navbar from "@components/Navbar/Navbar";
@@ -6,21 +7,30 @@ import Register from "@components/Register/Register";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { fas } from "@fortawesome/free-solid-svg-icons";
 import ProjectCard from "@pages/ProjectCard/ProjectCard";
-import projectsAtom from "@recoil/projects";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import { RecoilRoot } from "recoil";
 import "./App.css";
 import ApplyToProjectModal from "@components/ApplyToProjectModal/ApplyToProjectModal";
-import dummyData from "./dummyData.json";
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { RecoilRoot } from "recoil";
 
-const initializeData = ({ set }) => {
-  set(projectsAtom, dummyData.projects);
-};
+import PageHeader from "@components/order/PageHeader";
+import ProjectsTable from "@components/ProjectsTable";
+
+// import projectsAtom from "@recoil/projects";
+
+import "./App.css";
+// import dummyData from "./dummyData.json";
+
+// const initializeData = ({ set }) => {
+//   set(projectsAtom, dummyData.projects);
+// };
 
 library.add(fas);
 function App() {
   return (
-    <RecoilRoot initializeState={initializeData}>
+    <RecoilRoot>
+      {/* <RecoilRoot initializeState={initializeData}> */}
+      <PageHeader />
       <Router>
         <Routes>
           <Route path="/" element={<ProjectsTable />} />
