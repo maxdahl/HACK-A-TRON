@@ -1,0 +1,32 @@
+/* .navbar-ul {
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0;
+} */
+
+/* .navbar-ul > li {
+  margin-left: 100px;
+  min-width: 45em;
+  /* margin-bottom: 100px; */
+
+a {
+  color: #e89759;
+  padding: 20px;
+}
+
+a:hover {
+  color: #e77620;
+}
+
+.grid-item-a {
+  background-color: #e77620;
+  padding: 20px;
+}
+
+.grid-item-b {
+  background-color: aliceblue;
+  padding: 20px;
+}
