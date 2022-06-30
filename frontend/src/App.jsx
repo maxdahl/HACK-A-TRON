@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import AddProject from "@components/AddProject/AddProject";
 import Login from "@components/Login/Login";
 import Navbar from "@components/Navbar/Navbar";
