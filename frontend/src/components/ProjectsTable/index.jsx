@@ -1,22 +1,24 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import { MultiSelect } from "react-multi-select-component";
-import TextField from "@mui/material/TextField";
-import LinearProgress from "@mui/material/LinearProgress";
-import ProjectCard from "@pages/projectCard/ProjectCard";
-import { useRecoilValue, useRecoilState } from "recoil";
 import Navbar from "@components/Navbar/Navbar";
+import LinearProgress from "@mui/material/LinearProgress";
+import TextField from "@mui/material/TextField";
+import ProjectCard from "@pages/projectCard/ProjectCard";
+import { useState } from "react";
+import { MultiSelect } from "react-multi-select-component";
+import { Link } from "react-router-dom";
+import { useRecoilState, useRecoilValue } from "recoil";
+import PageHeader from "@components/AddProject/order/PageHeader";
+import PageTitleWrapper from "@components/AddProject/order/PageTitleWrapper";
 
 import {
+  projectsHeaderLabels,
   withFilter,
   withTableHeaderValues,
-  projectsHeaderLabels,
 } from "@recoil/projects";
 
 import projectsFilterAtom from "@recoil/projectsTableFilter";
 
-import AnTable from "./Table/AnTable";
 import "./Table.css";
+import AnTable from "./Table/AnTable";
 
 function ProjectsTable() {
   const projects = useRecoilValue(withFilter);
@@ -125,6 +127,9 @@ function ProjectsTable() {
 
   return (
     <>
+      <PageTitleWrapper>
+        <PageHeader location="Pojects Overview" />
+      </PageTitleWrapper>
       <div id="table-container">
         <AnTable headers={headers} data={data} />
       </div>

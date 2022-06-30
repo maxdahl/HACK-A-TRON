@@ -2,7 +2,7 @@ import { Typography, Grid } from "@mui/material";
 /* import PropTypes from "prop-types"; */
 import Box from "@mui/material/Box";
 
-function PageHeader() {
+function PageHeaderProjectsTable() {
   /*   const navigate = useNavigate(); */
   /*   const navigateToClientOverview = () => {
     navigate("/clients/overview");
@@ -29,7 +29,7 @@ function PageHeader() {
             gutterBottom
             sx={{ color: "#E77620", mt: "15px" }}
           >
-            CREATE A NEW PROJECT
+            Project Overview
           </Typography>
           <Typography
             variant="subtitle1"
@@ -76,8 +76,8 @@ function PageHeader() {
   handleCreateEvent: PropTypes.func,
 }; */
 
-PageHeader.defaultProps = {
+PageHeaderProjectsTable.defaultProps = {
   handleCreateEvent: () => {},
 };
 
-export default PageHeader;
+export default PageHeaderProjectsTable;

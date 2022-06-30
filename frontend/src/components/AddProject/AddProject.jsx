@@ -13,6 +13,8 @@ import Grid from "@mui/material/Grid";
 import * as React from "react";
 import { StepContent } from "@mui/material";
 import { makeStyles } from "@mui/styles";
+import PageTitleWrapper from "./order/PageTitleWrapper";
+import PageHeader from "./order/PageHeader";
 
 import Navbar from "@components/Navbar/Navbar";
 const steps = [
@@ -396,6 +398,9 @@ export default function AddProject() {
   const classes = useStyles();
   return (
     <>
+      <PageTitleWrapper>
+        <PageHeader location="Create new Project" />
+      </PageTitleWrapper>
       <Container>
         <Card sx={{ py: "50px" }}>
           <Stepper className={classes.root} activeStep={activeStep}>
