@@ -81,7 +81,7 @@ function PageHeader() {
     </Grid>
   );
 }
-//eslint-disable-next-line
+// eslint-disable-next-line
 PageHeader.propTypes = {
   handleCreateEvent: PropTypes.func,
 };
