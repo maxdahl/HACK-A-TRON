@@ -1,8 +1,8 @@
 import { HelmetProvider, Helmet } from "react-helmet-async";
-import PageTitleWrapper from "./PageTitleWrapper";
-import PageHeader from "./PageHeader";
+import PageTitleWrapper from "../PageLayout/PageTitleWrapper";
+import PageHeader from "../PageLayout/PageHeader";
 
-function AddOrder() {
+function AddProject() {
   return (
     <HelmetProvider>
       <Helmet>
@@ -15,4 +15,4 @@ function AddOrder() {
   );
 }
 
-export default AddOrder;
+export default AddProject;
