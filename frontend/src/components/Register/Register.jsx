@@ -7,7 +7,7 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from "../axios";
 
-const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
+const USER_REGEX = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
 const REGISTER_URL = "/register";
 
@@ -16,7 +16,7 @@ function Register() {
   const errRef = useRef();
 
   const [user, setUser] = useState("");
-  const [validName, setValidName] = useState(false);
+  const [validEmail, setValidEmail] = useState(false);
   const [userFocus, setUserFocus] = useState(false);
 
   const [pwd, setPwd] = useState("");
@@ -35,7 +35,7 @@ function Register() {
   }, []);
 
   useEffect(() => {
-    setValidName(USER_REGEX.test(user));
+    setValidEmail(USER_REGEX.test(user));
   }, [user]);
 
   useEffect(() => {
@@ -78,7 +78,7 @@ function Register() {
       if (!err?.response) {
         setErrMsg("No Server Response");
       } else if (err.response?.status === 409) {
-        setErrMsg("Username Taken");
+        setErrMsg("Email Taken");
       } else {
         setErrMsg("Registration Failed");
       }
@@ -109,14 +109,14 @@ function Register() {
           <h1 id="font1">Register</h1>
           <form onSubmit={handleSubmit}>
             <label id="font2" htmlFor="username">
-              Username:
+              Email:
               <FontAwesomeIcon
                 icon={faCheck}
-                className={validName ? "valid" : "hide"}
+                className={validEmail ? "valid" : "hide"}
               />
               <FontAwesomeIcon
                 icon={faTimes}
-                className={validName || !user ? "hide" : "invalid"}
+                className={validEmail || !user ? "hide" : "invalid"}
               />
               <input
                 type="text"
@@ -126,7 +126,7 @@ function Register() {
                 onChange={(e) => setUser(e.target.value)}
                 value={user}
                 required
-                aria-invalid={validName ? "false" : "true"}
+                aria-invalid={validEmail ? "false" : "true"}
                 aria-describedby="uidnote"
                 onFocus={() => setUserFocus(true)}
                 onBlur={() => setUserFocus(false)}
@@ -135,7 +135,7 @@ function Register() {
             <p
               id="uidnote font2"
               className={
-                userFocus && user && !validName ? "instructions" : "offscreen"
+                userFocus && user && !validEmail ? "instructions" : "offscreen"
               }
             >
               <FontAwesomeIcon icon={faInfoCircle} />
@@ -221,7 +221,7 @@ function Register() {
             <button
               id="font2"
               type="submit"
-              disabled={!!(!validName || !validPwd || !validMatch)}
+              disabled={!!(!validEmail || !validPwd || !validMatch)}
             >
               Sign Up
             </button>
