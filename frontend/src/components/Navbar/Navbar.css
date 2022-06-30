@@ -1,10 +1,14 @@
+/* #plus {
+  background-color: red;
+  -webkit-transition: background-color 0.5s ease-out;
+  -moz-transition: background-color 0.5s ease-out;
+  -o-transition: background-color 0.5s ease-out;
+  transition: background-color 0.5s cubic-bezier(0, 0.94, 0.32, 1);
+} */
+
 a {
   color: beige;
   /* padding: 20px; */
-}
-
-a:hover {
-  color: #ff0000;
 }
 
 .grid-item-a {
@@ -15,18 +19,6 @@ a:hover {
   background-color: #0a1e30;
 }
 
-.tb22 {
-  /* top: 30%; */
-  margin: 0;
-}
-
-#plus {
-  -webkit-transition: background-color 0.5s ease-out;
-  -moz-transition: background-color 0.5s ease-out;
-  -o-transition: background-color 0.5s ease-out;
-  transition: background-color 0.5s cubic-bezier(0, 0.94, 0.32, 1);
-  background-color: #e77620;
-}
 #nav-button:hover {
   background-color: #183650;
   cursor: pointer;
@@ -37,4 +29,24 @@ a:hover {
   -moz-transition: background-color 0.5s ease-out;
   -o-transition: background-color 0.5s ease-out;
   transition: background-color 0.5s cubic-bezier(0, 0.94, 0.32, 1);
+}
+
+#plus {
+  z-index: +1;
+  opacity: 1;
+  background-color: #e77620;
+}
+#plus:hover {
+  color: black;
+  opacity: 1;
+  background-color: #e89759;
+  -webkit-transition: background-color 0.5s ease-out;
+  -moz-transition: background-color 0.5s ease-out;
+  -o-transition: background-color 0.5s ease-out;
+  transition: background-color 0.5s cubic-bezier(0, 0.94, 0.32, 1);
+}
+
+#plus-button {
+  color: black;
+  border-radius: 50%;
 }

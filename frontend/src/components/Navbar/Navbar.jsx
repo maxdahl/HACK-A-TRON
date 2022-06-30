@@ -30,18 +30,9 @@ import Toolbar from "@mui/material/Toolbar";
 import { Link } from "react-router-dom";
 import "./Navbar.css";
 
-const boxSX = {
-  "&:hover": {
-    border: "1px solid #E77620",
-    color: "black",
-    backgroundColor: "#E89759",
-  },
-};
-
 const StyledFab = styled(Fab)({
-  backgroundColor: "#E77620",
   position: "absolute",
-  zIndex: 1,
+  zIndex: 0,
   top: -30,
   left: 0,
   right: 0,
@@ -53,12 +44,14 @@ export default function Navbar() {
     <AppBar
       position="fixed"
       /*  color="secondary" */
-      sx={{ top: "auto", bottom: 0 /* , backgroundColor: "#183650" */ }}
+      sx={{ top: "auto", bottom: 0 }}
     >
-      <Toolbar
-        /* className="tb22" */ style={{ padding: 0, minHeight: 0 }}
-        id="test"
-      >
+      <Toolbar style={{ padding: 0, minHeight: 0 }} id="test">
+        <StyledFab id="plus" aria-label="add">
+          <Link to="/newproject">
+            <Button id="plus-button">+ </Button>
+          </Link>
+        </StyledFab>
         <Grid
           container
           display="flex"
@@ -67,7 +60,7 @@ export default function Navbar() {
           style={{ padding: 0 }}
         >
           <Grid item className="grid-item-a" xs={6} textAlign="center">
-            <Link to="/navbar">
+            <Link to="/users">
               <Button
                 id="nav-button"
                 color="secondary"
@@ -78,7 +71,7 @@ export default function Navbar() {
             </Link>
           </Grid>
           <Grid item xs={6} className="grid-item-b" textAlign="center">
-            <Link to="/navbar">
+            <Link to="/projects">
               <Button id="nav-button" sx={{ width: "100%", color: "#F0F0F0" }}>
                 Projects
               </Button>
@@ -86,9 +79,6 @@ export default function Navbar() {
           </Grid>
         </Grid>
 
-        <StyledFab id="plus" aria-label="add" sx={boxSX}>
-          +
-        </StyledFab>
         <Box sx={{ flexGrow: 1 }} />
       </Toolbar>
     </AppBar>
