@@ -4,7 +4,7 @@
       "id": "1a",
       "name": "Project 1",
       "location": "Berlin",
-      "progress": "Developement",
+      "progress": [5, 10],
       "openPositions": ["Developer", "QA"],
       "techStack": ["react", "node", "typescript"],
       "partners": ["IBM", "Intel"],
@@ -14,7 +14,7 @@
       "id": "1b",
       "name": "Project 2",
       "location": "Madrid",
-      "progress": null,
+      "progress": [0, 10],
       "openPositions": ["Developer", "Developer", "QA"],
       "techStack": ["vuejs", "flask", "python"],
       "partners": ["El Zorro"],
@@ -24,11 +24,11 @@
       "id": "1c",
       "name": "Project 3",
       "location": "Madrid",
-      "progress": null,
+      "progress": [2, 5],
       "openPositions": ["Developer", "Developer", "QA"],
       "techStack": ["vuejs", "django", "python"],
       "partners": ["El Zorro"],
-      "status": "Not started"
+      "status": "UX Design"
     }
   ]
 }
