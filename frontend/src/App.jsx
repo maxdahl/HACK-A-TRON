@@ -24,7 +24,7 @@ import "./App.css";
 
 library.add(fas);
 function App() {
-  let project = {
+  const project = {
     name: "hackathon",
     location: "Berlin",
     field: "pharmaceutical",
