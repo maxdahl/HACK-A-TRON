@@ -1,5 +1,6 @@
-import { Typography, Grid } from "@mui/material";
+import { Typography, Button, Grid } from "@mui/material";
 /* import PropTypes from "prop-types"; */
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import Box from "@mui/material/Box";
 
 function PageHeader() {
@@ -65,6 +66,16 @@ function PageHeader() {
             minute: "2-digit",
           })}
         </Typography>
+        <Button
+          sx={{
+            mt: { xs: 2, md: 0, color: "#0A1E30" },
+          }}
+          /*           onClick={navigateToClientOverview} */
+          variant="outlined"
+          startIcon={<ArrowBackIcon fontSize="small" />}
+        >
+          Back to Project Overview
+        </Button>
       </Grid>
     </Grid>
   );
