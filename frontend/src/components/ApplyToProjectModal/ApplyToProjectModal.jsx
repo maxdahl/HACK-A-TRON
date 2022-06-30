@@ -51,7 +51,7 @@ export default function BasicModal() {
     <div>
       <Fab
         style={floating}
-        color="primary"
+        color="secondary"
         aria-label="add"
         onClick={handleOpen}
       >

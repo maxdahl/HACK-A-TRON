@@ -11,6 +11,8 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { RecoilRoot } from "recoil";
 import "./App.css";
 import ApplyToProjectModal from "@components/ApplyToProjectModal/ApplyToProjectModal";
+import Theme from "@components/Theme";
+import { ThemeProvider } from "@mui/material";
 import dummyData from "./dummyData.json";
 
 const initializeData = ({ set }) => {
@@ -20,22 +22,24 @@ const initializeData = ({ set }) => {
 library.add(fas);
 function App() {
   return (
-    <RecoilRoot initializeState={initializeData}>
-      <Router>
-        <Routes>
-          <Route path="/" element={<ProjectsTable />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/project" element={<ProjectCard />} />
-          <Route path="/addproject" element={<AddProject />} />
-          <Route path="/navbar" element={<Navbar />} />
-          <Route
-            path="/ApplyToProjectModal"
-            element={<ApplyToProjectModal />}
-          />
-        </Routes>
-      </Router>
-    </RecoilRoot>
+    <ThemeProvider theme={Theme}>
+      <RecoilRoot initializeState={initializeData}>
+        <Router>
+          <Routes>
+            <Route path="/" element={<ProjectsTable />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/project" element={<ProjectCard />} />
+            <Route path="/addproject" element={<AddProject />} />
+            <Route path="/navbar" element={<Navbar />} />
+            <Route
+              path="/ApplyToProjectModal"
+              element={<ApplyToProjectModal />}
+            />
+          </Routes>
+        </Router>
+      </RecoilRoot>
+    </ThemeProvider>
   );
 }
 

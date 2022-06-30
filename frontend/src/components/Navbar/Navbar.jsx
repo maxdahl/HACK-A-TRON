@@ -42,13 +42,15 @@ export default function Navbar() {
   return (
     <AppBar
       position="fixed"
-      color="secondary"
       sx={{ top: "auto", bottom: 0, backgroundColor: "#183650" }}
     >
       <Toolbar className="tb22">
         <Grid container display="flex" direction="row" alignItems="center">
           <Grid item className="grid-item-a" xs={6} textAlign="center">
-            <a href="/users" style={{ width: "100%" }}>
+            <a
+              href="/users"
+              style={{ width: "100%", backgroundColor: "primary" }}
+            >
               Users
             </a>
           </Grid>
