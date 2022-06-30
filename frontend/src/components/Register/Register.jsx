@@ -92,7 +92,7 @@ function Register() {
         <section>
           <h1 id="font1">Success!</h1>
           <p>
-            <a id="font1" href="/#">
+            <a id="font1" href="/">
               Sign In
             </a>
           </p>
@@ -231,7 +231,7 @@ function Register() {
             <br />
             <span className="line">
               {/* put router link here */}
-              <a href="/#">Sign In</a>
+              <a href="/login">Sign In</a>
             </span>
           </p>
         </section>
