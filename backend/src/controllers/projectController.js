@@ -9,7 +9,6 @@ const Project = require("../models/Project");
 // eslint-disable-next-line
 const getProjects = asyncHandler(async (req, res, next) => {
   const allProjects = await Project.find();
-  console.log(allProjects);
   res.status(200).json({
     success: true,
     data: allProjects,
