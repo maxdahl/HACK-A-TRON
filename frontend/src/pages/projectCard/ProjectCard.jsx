@@ -35,7 +35,7 @@ function ProjectCard() {
               Progress:
               <span>{projects.projects[0].progress}%</span>
               <ProgressBar
-                bgcolor={"#e77620"}
+                bgcolor="#e77620"
                 completed={projects.projects[0].progress}
               />
             </p>

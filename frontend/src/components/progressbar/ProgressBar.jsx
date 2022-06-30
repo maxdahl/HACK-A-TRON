@@ -1,6 +1,6 @@
 import React from "react";
 
-const ProgressBar = (props) => {
+function ProgressBar(props) {
   const { bgcolor, completed } = props;
   const containerStyles = {
     height: 14,
@@ -28,10 +28,10 @@ const ProgressBar = (props) => {
   return (
     <div style={containerStyles}>
       <div style={fillerStyles}>
-        <span style={labelStyles}></span>
+        <span style={labelStyles} />
       </div>
     </div>
   );
-};
+}
 
 export default ProgressBar;
