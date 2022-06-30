@@ -5,7 +5,6 @@ import projects from "../../dummyData.json";
 import "./ProjectCard.css";
 
 function ProjectCard() {
-  console.log(projects.projects[0].name);
   return (
     <section className="project-card">
       <div className="container">
