@@ -2,9 +2,11 @@
 import { useRef, useState, useEffect /* useContext */ } from "react";
 /* import AuthContext from "./AuthProvider"; */
 
+// email & pwd to login
+
 import axios from "../axios";
 
-const LOGIN_URL = "/auth";
+const LOGIN_URL = "/api/v1/users/login";
 
 const Login = () => {
   /*   const { setAuth } = useContext(AuthContext); */
@@ -30,7 +32,7 @@ const Login = () => {
     try {
       const response = await axios.post(
         LOGIN_URL,
-        JSON.stringify({ user, pwd }),
+        /*   JSON.stringify */ { user, pwd },
         {
           headers: { "Content-Type": "application/json" },
           withCredentials: true,
@@ -48,7 +50,7 @@ const Login = () => {
       if (!err?.response) {
         setErrMsg("No Server Response");
       } else if (err.response?.status === 400) {
-        setErrMsg("Missing Username or Password");
+        setErrMsg("Missing Email or Password");
       } else if (err.response?.status === 401) {
         setErrMsg("Unauthorized");
       } else {
@@ -65,7 +67,7 @@ const Login = () => {
           <h1 id="font1">You are logged in!</h1>
           <br />
           <p>
-            <a href="/#">Go to Home</a>
+            <a href="/">Go to Home</a>
           </p>
         </section>
       ) : (
@@ -80,7 +82,7 @@ const Login = () => {
           <h1 id="font1">Sign In</h1>
           <form onSubmit={handleSubmit}>
             <label id="font2" htmlFor="username">
-              Username:
+              Email:
               <input
                 type="text"
                 id="username"
@@ -101,14 +103,14 @@ const Login = () => {
                 required
               />
             </label>
-            <button type="button">Sign In</button>
+            <button type="submit">Sign In</button>
           </form>
           <p id="font2">
             Need an Account?
             <br />
             <span className="line">
               {/* put router link here */}
-              <a href="/#">Sign Up</a>
+              <a href="/register">Sign Up</a>
             </span>
           </p>
         </section>

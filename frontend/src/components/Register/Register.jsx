@@ -6,18 +6,25 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from "../axios";
-
-const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
+// eslint-disable-next-line
+const USER_REGEX = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+// eslint-disable-next-line
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
-const REGISTER_URL = "/register";
+const REGISTER_URL = "/api/v1/users/register";
 
 function Register() {
   const userRef = useRef();
   const errRef = useRef();
 
   const [user, setUser] = useState("");
-  const [validName, setValidName] = useState(false);
+  const [validEmail, setValidEmail] = useState(false);
   const [userFocus, setUserFocus] = useState(false);
+
+  const [lastName, setLastName] = useState();
+  const [firstName, setFirstName] = useState();
+  const [role, setRole] = useState();
+  const [location, setLocation] = useState();
+  const [language, setLanguage] = useState();
 
   const [pwd, setPwd] = useState("");
   const [validPwd, setValidPwd] = useState(false);
@@ -35,7 +42,7 @@ function Register() {
   }, []);
 
   useEffect(() => {
-    setValidName(USER_REGEX.test(user));
+    setValidEmail(USER_REGEX.test(user));
   }, [user]);
 
   useEffect(() => {
@@ -59,14 +66,21 @@ function Register() {
     try {
       const response = await axios.post(
         REGISTER_URL,
-        JSON.stringify({ user, pwd }),
+        {
+          email: user,
+          password: pwd,
+          firstName,
+          language,
+          lastName,
+          role,
+          location,
+        },
         {
           headers: { "Content-Type": "application/json" },
           withCredentials: true,
         }
       );
       console.warn(response?.data);
-      console.warn(response?.accessToken);
       console.warn(JSON.stringify(response));
       setSuccess(true);
       // clear state and controlled inputs
@@ -74,11 +88,16 @@ function Register() {
       setUser("");
       setPwd("");
       setMatchPwd("");
+      setLanguage("");
+      setFirstName("");
+      setLastName("");
+      setLocation("");
+      setRole("");
     } catch (err) {
       if (!err?.response) {
         setErrMsg("No Server Response");
       } else if (err.response?.status === 409) {
-        setErrMsg("Username Taken");
+        setErrMsg("Email Taken");
       } else {
         setErrMsg("Registration Failed");
       }
@@ -92,7 +111,7 @@ function Register() {
         <section>
           <h1 id="font1">Success!</h1>
           <p>
-            <a id="font1" href="/#">
+            <a id="font1" href="/">
               Sign In
             </a>
           </p>
@@ -108,15 +127,80 @@ function Register() {
           </p>
           <h1 id="font1">Register</h1>
           <form onSubmit={handleSubmit}>
+            <label id="font2" htmlFor="firstname">
+              First name:
+              <input
+                type="text"
+                id="firstname"
+                ref={userRef}
+                onChange={(e) => setFirstName(e.target.value)}
+                value={firstName}
+                required
+                onFocus={() => setUserFocus(true)}
+                onBlur={() => setUserFocus(false)}
+              />
+            </label>
+            <label id="font2" htmlFor="lastname">
+              Last name:
+              <input
+                type="text"
+                id="lastname"
+                ref={userRef}
+                onChange={(e) => setLastName(e.target.value)}
+                value={lastName}
+                required
+                onFocus={() => setUserFocus(true)}
+                onBlur={() => setUserFocus(false)}
+              />
+            </label>
+            <label id="font2" htmlFor="role">
+              Role:
+              <input
+                type="text"
+                id="role"
+                ref={userRef}
+                onChange={(e) => setRole(e.target.value)}
+                value={role}
+                required
+                onFocus={() => setUserFocus(true)}
+                onBlur={() => setUserFocus(false)}
+              />
+            </label>
+            <label id="font2" htmlFor="location">
+              Location:
+              <input
+                type="text"
+                id="location"
+                ref={userRef}
+                onChange={(e) => setLocation(e.target.value)}
+                value={location}
+                required
+                onFocus={() => setUserFocus(true)}
+                onBlur={() => setUserFocus(false)}
+              />
+            </label>
+            <label id="font2" htmlFor="language">
+              Language:
+              <input
+                type="text"
+                id="language"
+                ref={userRef}
+                onChange={(e) => setLanguage(e.target.value)}
+                value={language}
+                onFocus={() => setUserFocus(true)}
+                onBlur={() => setUserFocus(false)}
+              />
+            </label>
+
             <label id="font2" htmlFor="username">
-              Username:
+              Email:
               <FontAwesomeIcon
                 icon={faCheck}
-                className={validName ? "valid" : "hide"}
+                className={validEmail ? "valid" : "hide"}
               />
               <FontAwesomeIcon
                 icon={faTimes}
-                className={validName || !user ? "hide" : "invalid"}
+                className={validEmail || !user ? "hide" : "invalid"}
               />
               <input
                 type="text"
@@ -126,7 +210,7 @@ function Register() {
                 onChange={(e) => setUser(e.target.value)}
                 value={user}
                 required
-                aria-invalid={validName ? "false" : "true"}
+                aria-invalid={validEmail ? "false" : "true"}
                 aria-describedby="uidnote"
                 onFocus={() => setUserFocus(true)}
                 onBlur={() => setUserFocus(false)}
@@ -135,7 +219,7 @@ function Register() {
             <p
               id="uidnote font2"
               className={
-                userFocus && user && !validName ? "instructions" : "offscreen"
+                userFocus && user && !validEmail ? "instructions" : "offscreen"
               }
             >
               <FontAwesomeIcon icon={faInfoCircle} />
@@ -221,7 +305,7 @@ function Register() {
             <button
               id="font2"
               type="submit"
-              disabled={!!(!validName || !validPwd || !validMatch)}
+              disabled={!!(!validEmail || !validPwd || !validMatch)}
             >
               Sign Up
             </button>
@@ -231,7 +315,7 @@ function Register() {
             <br />
             <span className="line">
               {/* put router link here */}
-              <a href="/#">Sign In</a>
+              <a href="/login">Sign In</a>
             </span>
           </p>
         </section>

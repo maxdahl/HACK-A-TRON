@@ -64,7 +64,7 @@ UserSchema.pre("save", async function (next) {
 UserSchema.methods.getSignedJwtToken = function () {
   // since it is a method and not static, we are going to call it on a user and we'll get his userId
   return jwt.sign({ id: this._id }, process.env.JWT_SECRET, {
-    expiresIn: process.env.JWT_EXPIRE,
+    expiresIn: "10d",
   });
 };
 
