@@ -14,6 +14,7 @@ import * as React from "react";
 import { StepContent } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 
+import Navbar from "@components/Navbar/Navbar";
 const steps = [
   "General Information",
   "Project Timeline",
@@ -438,31 +439,34 @@ export default function AddProject() {
               {ActiveStepComponent()}
             </Container>
 
-            {/* BOTTOM BUTTONS */}
 
-            <Box sx={{ display: "flex", flexDirection: "row", p: 2 }}>
-              <Button
-                color="inherit"
-                disabled={activeStep === 0}
-                onClick={handleBack}
-                sx={{ mr: "auto" }}
-              >
-                Back
-              </Button>
-              <div sx={{ flex: "1 1 auto" }} />
-              {isStepOptional(activeStep) && (
-                <Button color="inherit" onClick={handleSkip} sx={{ mr: 1 }}>
-                  Skip
+              {/* BOTTOM BUTTONS */}
+
+              <Box sx={{ display: "flex", flexDirection: "row", p: 2 }}>
+                <Button
+                  color="inherit"
+                  disabled={activeStep === 0}
+                  onClick={handleBack}
+                  sx={{ mr: "auto" }}
+                >
+                  Back
                 </Button>
-              )}
+                <div sx={{ flex: "1 1 auto" }} />
+                {isStepOptional(activeStep) && (
+                  <Button color="inherit" onClick={handleSkip} sx={{ mr: 1 }}>
+                    Skip
+                  </Button>
+                )}
 
-              <Button onClick={handleNext}>
-                {activeStep === steps.length - 1 ? "Finish" : "Next"}
-              </Button>
-            </Box>
-          </>
-        )}
-      </Card>
-    </Container>
+                <Button onClick={handleNext}>
+                  {activeStep === steps.length - 1 ? "Finish" : "Next"}
+                </Button>
+              </Box>
+            </>
+          )}
+        </Card>
+      </Container>
+      <Navbar />
+    </>
   );
 }

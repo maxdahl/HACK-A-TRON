@@ -42,12 +42,17 @@ const StyledFab = styled(Fab)({
 export default function Navbar() {
   return (
     <AppBar
-      position="fixed"
-      sx={{ top: "auto", bottom: 0, backgroundColor: "#183650" }}
+      sx={{
+        width: "100%",
+        position: "fixed",
+        top: "auto",
+        bottom: 0,
+        backgroundColor: "#183650",
+      }}
     >
       <Toolbar style={{ padding: 0, minHeight: 0 }} id="test">
         <StyledFab id="plus" aria-label="add">
-          <Link to="/newproject">
+          <Link to="/addproject">
             <Button id="plus-button">+ </Button>
           </Link>
         </StyledFab>
@@ -66,7 +71,7 @@ export default function Navbar() {
             </Link>
           </Grid>
           <Grid item xs={6} className="grid-item-b" textAlign="center">
-            <Link to="/projects">
+            <Link to="/">
               <Button id="nav-button" sx={{ width: "100%", color: "#F0F0F0" }}>
                 Projects
               </Button>
