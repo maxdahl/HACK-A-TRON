@@ -2,7 +2,7 @@
 import { useRef, useState, useEffect /* useContext */ } from "react";
 /* import AuthContext from "./AuthProvider"; */
 
-import axios from "./axios";
+import axios from "../axios";
 
 const LOGIN_URL = "/auth";
 
