@@ -2,6 +2,8 @@
 import { Box, Container, Grid } from "@mui/material";
 import { useEffect /* useContext */, useRef, useState } from "react";
 import { Link } from "react-router-dom";
+import PageHeader from "@components/AddProject/order/PageHeader";
+import PageTitleWrapper from "@components/AddProject/order/PageTitleWrapper";
 
 /* import AuthContext from "./AuthProvider"; */
 
@@ -63,71 +65,76 @@ const Login = () => {
   };
 
   return (
-    <Container>
-      <Grid
-        container
-        spacing={2}
-        alignItems="center"
-        justify="center"
-        direction="column"
-      >
-        <Grid item xs={12}>
-          <>
-            <p
-              ref={errRef}
-              className={errMsg ? "errmsg" : "offscreen"}
-              aria-live="assertive"
-            >
-              {errMsg}
-            </p>
-            <h1 id="font1">Sign In</h1>
-            <form onSubmit={handleSubmit}>
-              <label id="font2" htmlFor="username">
-                <input
-                  style={{ width: "300px" }}
-                  type="text"
-                  id="username"
-                  placeholder="Email"
-                  ref={userRef}
-                  autoComplete="off"
-                  onChange={(e) => setUser(e.target.value)}
-                  value={user}
-                  required
-                />
-              </label>
-              <label id="font2" htmlFor="password">
-                <input
-                  style={{ width: "300px" }}
-                  type="password"
-                  placeholder="Password"
-                  id="password"
-                  onChange={(e) => setPwd(e.target.value)}
-                  value={pwd}
-                  required
-                />
-              </label>
+    <>
+      <PageTitleWrapper>
+        <PageHeader location="Login" />
+      </PageTitleWrapper>
+      <Container>
+        <Grid
+          container
+          spacing={2}
+          alignItems="center"
+          justify="center"
+          direction="column"
+        >
+          <Grid item xs={12}>
+            <>
+              <p
+                ref={errRef}
+                className={errMsg ? "errmsg" : "offscreen"}
+                aria-live="assertive"
+              >
+                {errMsg}
+              </p>
+              <h1 id="font1">Sign In</h1>
+              <form onSubmit={handleSubmit}>
+                <label id="font2" htmlFor="username">
+                  <input
+                    style={{ width: "300px" }}
+                    type="text"
+                    id="username"
+                    placeholder="Email"
+                    ref={userRef}
+                    autoComplete="off"
+                    onChange={(e) => setUser(e.target.value)}
+                    value={user}
+                    required
+                  />
+                </label>
+                <label id="font2" htmlFor="password">
+                  <input
+                    style={{ width: "300px" }}
+                    type="password"
+                    placeholder="Password"
+                    id="password"
+                    onChange={(e) => setPwd(e.target.value)}
+                    value={pwd}
+                    required
+                  />
+                </label>
+                <Grid item xs={12}>
+                  <Link to="/">
+                    <button type="submit" style={{ width: "300px" }}>
+                      Sign In
+                    </button>
+                  </Link>
+                </Grid>
+              </form>
               <Grid item xs={12}>
-                <Link to="/">
-                  <button type="submit" style={{ width: "300px" }}>
-                    Sign In
-                  </button>
-                </Link>
+                <Box>
+                  <p id="font2">
+                    Need an Account?
+                    <span className="line">
+                      <a href="/register">Sign Up</a>
+                    </span>
+                  </p>
+                </Box>
               </Grid>
-            </form>
-            <Grid item xs={12}>
-              <Box>
-                <p id="font2">
-                  Need an Account?
-                  <span className="line">
-                    <a href="/register">Sign Up</a>
-                  </span>
-                </p>
-              </Box>
-            </Grid>
-          </>
+            </>
+          </Grid>
         </Grid>
-      </Grid>
-    </Container>
+      </Container>
+    </>
   );
 };
 

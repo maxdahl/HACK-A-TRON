@@ -350,40 +350,38 @@ export default function AddProject() {
 
       case 4:
         return (
-          <Card sx={{ my: "20px" }}>
-            <CardContent>
-              <Box
-                sx={{
-                  mt: "10px",
-                  mb: "30px",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  backgroundColor: "#DDE7F6",
-                  height: "100px",
-                }}
-              >
-                <h1>Project Description</h1>
-              </Box>
-              <Grid container spacing={2}>
-                <Grid item lg={12}>
-                  <TextField
-                    fullWidth
-                    varient="outlined"
-                    placeholder="Project Description ..."
-                    id="clientName"
-                    size="medium"
-                    multiline
-                    rows={4}
-                    onChange={(e) => {
-                      formValue.description = e.target.value;
-                      console.log(formValue);
-                    }}
-                  />
-                </Grid>
+          <>
+            <Box
+              sx={{
+                mt: "10px",
+                mb: "30px",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                backgroundColor: "#DDE7F6",
+                height: "100px",
+              }}
+            >
+              <h1>Project Description</h1>
+            </Box>
+            <Grid container spacing={2}>
+              <Grid item lg={12}>
+                <TextField
+                  fullWidth
+                  varient="outlined"
+                  placeholder="Project Description ..."
+                  id="clientName"
+                  size="medium"
+                  multiline
+                  rows={4}
+                  onChange={(e) => {
+                    formValue.description = e.target.value;
+                    console.log(formValue);
+                  }}
+                />
               </Grid>
-            </CardContent>
-          </Card>
+            </Grid>
+          </>
         );
         break;
     }
@@ -401,8 +399,8 @@ export default function AddProject() {
       <PageTitleWrapper>
         <PageHeader location="Create new Project" />
       </PageTitleWrapper>
-      <Container>
-        <Card sx={{ py: "50px" }}>
+      <Container m={0}>
+        <Card sx={{ py: "50px", mx: "0" }}>
           <Stepper className={classes.root} activeStep={activeStep}>
             {steps.map((label, index) => {
               const stepProps = {};

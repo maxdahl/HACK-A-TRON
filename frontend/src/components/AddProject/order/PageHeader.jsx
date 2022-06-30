@@ -9,7 +9,7 @@ function PageHeader({ location }) {
   }; */
 
   return (
-    <Box mx={30}>
+    <Box mx={10}>
       <Grid container justifyContent="space-between" alignItems="center">
         <Grid item>
           <Box
@@ -46,6 +46,7 @@ function PageHeader({ location }) {
             fontWeight="bold"
             gutterBottom
             sx={{ color: "#0A1E30" }}
+            align="right"
           >
             {new Date().toLocaleDateString("en-US", {
               weekday: "long",
