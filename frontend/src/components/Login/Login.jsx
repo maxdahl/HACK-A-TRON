@@ -1,5 +1,8 @@
 /* eslint-disable react/function-component-definition */
-import { useRef, useState, useEffect /* useContext */ } from "react";
+import { Box, Container, Grid } from "@mui/material";
+import { useEffect /* useContext */, useRef, useState } from "react";
+import { Link } from "react-router-dom";
+
 /* import AuthContext from "./AuthProvider"; */
 
 // email & pwd to login
@@ -7,7 +10,6 @@ import { useRef, useState, useEffect /* useContext */ } from "react";
 import axios from "../axios";
 
 const LOGIN_URL = "/api/v1/users/login";
-
 const Login = () => {
   /*   const { setAuth } = useContext(AuthContext); */
   const userRef = useRef();
@@ -16,7 +18,7 @@ const Login = () => {
   const [user, setUser] = useState("");
   const [pwd, setPwd] = useState("");
   const [errMsg, setErrMsg] = useState("");
-  const [success, setSuccess] = useState(false);
+  /*  const [success, setSuccess] = useState(false); */
 
   useEffect(() => {
     userRef.current.focus();
@@ -45,7 +47,7 @@ const Login = () => {
       setAuth({ user, pwd, roles, accessToken }); */
       setUser("");
       setPwd("");
-      setSuccess(true);
+      /* setSuccess(true); */
     } catch (err) {
       if (!err?.response) {
         setErrMsg("No Server Response");
@@ -61,61 +63,71 @@ const Login = () => {
   };
 
   return (
-    <div>
-      {success ? (
-        <section>
-          <h1 id="font1">You are logged in!</h1>
-          <br />
-          <p>
-            <a href="/">Go to Home</a>
-          </p>
-        </section>
-      ) : (
-        <section>
-          <p
-            ref={errRef}
-            className={errMsg ? "errmsg" : "offscreen"}
-            aria-live="assertive"
-          >
-            {errMsg}
-          </p>
-          <h1 id="font1">Sign In</h1>
-          <form onSubmit={handleSubmit}>
-            <label id="font2" htmlFor="username">
-              Email:
-              <input
-                type="text"
-                id="username"
-                ref={userRef}
-                autoComplete="off"
-                onChange={(e) => setUser(e.target.value)}
-                value={user}
-                required
-              />
-            </label>
-            <label id="font2" htmlFor="password">
-              Password:
-              <input
-                type="password"
-                id="password"
-                onChange={(e) => setPwd(e.target.value)}
-                value={pwd}
-                required
-              />
-            </label>
-            <button type="submit">Sign In</button>
-          </form>
-          <p id="font2">
-            Need an Account?
-            <br />
-            <span className="line">
-              {/* put router link here */}
-              <a href="/register">Sign Up</a>
-            </span>
-          </p>
-        </section>
-      )}
-    </div>
+    <Container>
+      <Grid
+        container
+        spacing={2}
+        alignItems="center"
+        justify="center"
+        direction="column"
+      >
+        <Grid item xs={12}>
+          <>
+            <p
+              ref={errRef}
+              className={errMsg ? "errmsg" : "offscreen"}
+              aria-live="assertive"
+            >
+              {errMsg}
+            </p>
+            <h1 id="font1">Sign In</h1>
+            <form onSubmit={handleSubmit}>
+              <label id="font2" htmlFor="username">
+                <input
+                  style={{ width: "300px" }}
+                  type="text"
+                  id="username"
+                  placeholder="Email"
+                  ref={userRef}
+                  autoComplete="off"
+                  onChange={(e) => setUser(e.target.value)}
+                  value={user}
+                  required
+                />
+              </label>
+              <label id="font2" htmlFor="password">
+                <input
+                  style={{ width: "300px" }}
+                  type="password"
+                  placeholder="Password"
+                  id="password"
+                  onChange={(e) => setPwd(e.target.value)}
+                  value={pwd}
+                  required
+                />
+              </label>
+              <Grid item xs={12}>
+                <Link to="/">
+                  <button type="submit" style={{ width: "300px" }}>
+                    Sign In
+                  </button>
+                </Link>
+              </Grid>
+            </form>
+            <Grid item xs={12}>
+              <Box>
+                <p id="font2">
+                  Need an Account?
+                  <span className="line">
+                    <a href="/register">Sign Up</a>
+                  </span>
+                </p>
+              </Box>
+            </Grid>
+          </>
+        </Grid>
+      </Grid>
+    </Container>
   );
 };
 
