@@ -9,8 +9,8 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { RecoilRoot } from "recoil";
 
 import ProjectCard from "@pages/projectCard/ProjectCard";
-import PageHeader from "@components/PageLayout/PageHeader";
-
+/* import PageHeader from "@components/PageLayout/PageHeader";
+ */
 // import projectsAtom from "@recoil/projects";
 
 import "./App.css";
@@ -39,7 +39,7 @@ function App() {
   return (
     <RecoilRoot>
       {/* <RecoilRoot initializeState={initializeData}> */}
-      <PageHeader />
+      {/*       <PageHeader /> */}
       <Router>
         <Routes>
           <Route path="/" element={<ProjectsTable />} />

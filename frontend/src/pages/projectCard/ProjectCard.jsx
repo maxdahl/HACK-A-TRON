@@ -2,12 +2,17 @@ import Navbar from "@components/Navbar/Navbar";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import ApplyToProjectModal from "@components/ApplyToProjectModal/ApplyToProjectModal";
-import ProgressBar from "../../components/progressbar/ProgressBar";
+import ProgressBar from "@components/progressbar/ProgressBar";
 import "./ProjectCard.css";
+import PageHeader from "@components/AddProject/order/PageHeader";
+import PageTitleWrapper from "@components/AddProject/order/PageTitleWrapper";
 
 function ProjectCard({ project /* , onClose */ }) {
   return (
     <>
+      <PageTitleWrapper>
+        <PageHeader location={project.name} />
+      </PageTitleWrapper>
       <div className="project-card">
         <div className="container-project-card">
           <h4 className="header-title">
