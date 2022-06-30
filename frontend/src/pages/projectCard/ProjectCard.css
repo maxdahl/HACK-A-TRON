@@ -12,7 +12,7 @@ a {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 90%;
+  width: 50%;
   box-sizing: border-box;
   border: 1px solid #ccc;
   margin-top: 25px;
@@ -22,8 +22,14 @@ a {
   display: flex;
   justify-content: center;
   border-bottom: 1px solid #ccc;
-  color: #ccc;
+  color: #666;
   padding-bottom: 10px;
+}
+.project-description {
+  display: flex;
+  flex-direction: column;
+  justify-items: flex-start;
+  width: 67%;
 }
 .button-container {
   display: flex;
@@ -41,4 +47,12 @@ a {
   margin-top: 24px;
   margin-bottom: 24px;
   line-height: 52px;
+}
+.icon-project {
+  font-size: 29px;
+  margin-right: 10px;
+}
+p {
+  display: flex;
+  align-items: center;
 }
