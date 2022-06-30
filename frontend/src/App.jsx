@@ -1,17 +1,16 @@
 import AddProject from "@components/AddProject/AddProject";
+import ApplyToProjectModal from "@components/ApplyToProjectModal/ApplyToProjectModal";
 import Login from "@components/Login/Login";
 import Navbar from "@components/Navbar/Navbar";
 import ProjectsTable from "@components/ProjectsTable";
 import Register from "@components/Register/Register";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { fas } from "@fortawesome/free-solid-svg-icons";
-import ApplyToProjectModal from "@components/ApplyToProjectModal/ApplyToProjectModal";
-import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { RecoilRoot } from "recoil";
 
-import ProjectCard from "@pages/projectCard/ProjectCard";
 import PageHeader from "@components/PageLayout/PageHeader";
+import ProjectCard from "@pages/projectCard/ProjectCard";
 
 // import projectsAtom from "@recoil/projects";
 

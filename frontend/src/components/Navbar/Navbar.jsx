@@ -43,8 +43,7 @@ export default function Navbar() {
   return (
     <AppBar
       position="fixed"
-      /*  color="secondary" */
-      sx={{ top: "auto", bottom: 0 }}
+      sx={{ top: "auto", bottom: 0, backgroundColor: "#183650" }}
     >
       <Toolbar style={{ padding: 0, minHeight: 0 }} id="test">
         <StyledFab id="plus" aria-label="add">
@@ -60,15 +59,12 @@ export default function Navbar() {
           style={{ padding: 0 }}
         >
           <Grid item className="grid-item-a" xs={6} textAlign="center">
-            <Link to="/users">
-              <Button
-                id="nav-button"
-                color="secondary"
-                sx={{ width: "100%", color: "#F0F0F0" }}
-              >
-                Users
-              </Button>
-            </Link>
+            <a
+              href="/users"
+              style={{ width: "100%", backgroundColor: "primary" }}
+            >
+              Users
+            </a>
           </Grid>
           <Grid item xs={6} className="grid-item-b" textAlign="center">
             <Link to="/projects">
