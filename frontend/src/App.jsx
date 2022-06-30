@@ -1,3 +1,4 @@
+import AddOrder from "@components/order/form";
 import React, { Suspense } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { RecoilRoot } from "recoil";
@@ -10,7 +11,7 @@ function App() {
       <Suspense>
         <Router>
           <Routes>
-            <Route path="/" element={<div>DASHBOARD</div>} />
+            <Route path="/" element={<AddOrder />} />
           </Routes>
         </Router>
       </Suspense>
