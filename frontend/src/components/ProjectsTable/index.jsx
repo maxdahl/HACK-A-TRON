@@ -86,7 +86,14 @@ function ProjectsTable() {
         if (key === "name") {
           value = (
             // eslint-disable-next-line
-            <Link to="" onClick={() => { setCurrentProject(project); }}>{project.name}</Link>
+            <Link
+              to=""
+              onClick={() => {
+                setCurrentProject(project);
+              }}
+            >
+              {project.name}
+            </Link>
           );
         } else if (key === "progress") {
           value = (
