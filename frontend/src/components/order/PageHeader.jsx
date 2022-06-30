@@ -1,6 +1,5 @@
 import { Typography, Button, Grid } from "@mui/material";
-import { useNavigate } from "react-router";
-import PropTypes from "prop-types";
+/* import PropTypes from "prop-types"; */
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import Box from "@mui/material/Box";
 
@@ -82,9 +81,9 @@ function PageHeader() {
   );
 }
 // eslint-disable-next-line
-PageHeader.propTypes = {
+/* PageHeader.propTypes = {
   handleCreateEvent: PropTypes.func,
-};
+}; */
 
 PageHeader.defaultProps = {
   handleCreateEvent: () => {},
