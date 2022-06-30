@@ -35,6 +35,9 @@ function App() {
           <Route path="/project" element={<ProjectCard />} />
           <Route path="/addproject" element={<AddProject />} />
           <Route path="/navbar" element={<Navbar />} />
+          <Route path="/newproject" element={<Navbar />} />
+          <Route path="/users" element={<Navbar />} />
+          <Route path="/projects" element={<Navbar />} />
           <Route
             path="/ApplyToProjectModal"
             element={<ApplyToProjectModal />}

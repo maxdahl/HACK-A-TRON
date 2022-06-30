@@ -20,18 +20,19 @@
 
 // export default Navbar;
 
+import Button from "@mui/material/Button";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Fab from "@mui/material/Fab";
 import Grid from "@mui/material/Grid";
 import { styled } from "@mui/material/styles";
 import Toolbar from "@mui/material/Toolbar";
-/* import { Link } from "react-router-dom"; */
+import { Link } from "react-router-dom";
 import "./Navbar.css";
 
 const StyledFab = styled(Fab)({
   position: "absolute",
-  zIndex: 1,
+  zIndex: 0,
   top: -30,
   left: 0,
   right: 0,
@@ -44,8 +45,19 @@ export default function Navbar() {
       position="fixed"
       sx={{ top: "auto", bottom: 0, backgroundColor: "#183650" }}
     >
-      <Toolbar className="tb22">
-        <Grid container display="flex" direction="row" alignItems="center">
+      <Toolbar style={{ padding: 0, minHeight: 0 }} id="test">
+        <StyledFab id="plus" aria-label="add">
+          <Link to="/newproject">
+            <Button id="plus-button">+ </Button>
+          </Link>
+        </StyledFab>
+        <Grid
+          container
+          display="flex"
+          direction="row"
+          alignItems="center"
+          style={{ padding: 0 }}
+        >
           <Grid item className="grid-item-a" xs={6} textAlign="center">
             <a
               href="/users"
@@ -55,15 +67,14 @@ export default function Navbar() {
             </a>
           </Grid>
           <Grid item xs={6} className="grid-item-b" textAlign="center">
-            <a href="/" style={{ width: "100%" }}>
-              Projects
-            </a>
+            <Link to="/projects">
+              <Button id="nav-button" sx={{ width: "100%", color: "#F0F0F0" }}>
+                Projects
+              </Button>
+            </Link>
           </Grid>
         </Grid>
 
-        <StyledFab color="#787878" aria-label="add">
-          +
-        </StyledFab>
         <Box sx={{ flexGrow: 1 }} />
       </Toolbar>
     </AppBar>
