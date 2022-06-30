@@ -59,11 +59,15 @@ function ProjectsTable() {
         label: (
           <TextField
             id="outlined-search"
-            label="Search field"
+            label="Search projects..."
             type="search"
+            size="small"
             value={nameValue}
             onChange={(e) => {
               updateFilter("name", e.target.value);
+            }}
+            onFocus={(e) => {
+              e.target.select();
             }}
           />
         ),
@@ -81,13 +85,7 @@ function ProjectsTable() {
             <LinearProgress variant="determinate" value={project.progress} />
           );
         } else if (Array.isArray(project[key])) {
-          value = (
-            <ul>
-              {project[key].map((v) => (
-                <li>{v}</li>
-              ))}
-            </ul>
-          );
+          value = project[key].join(", ");
         }
         row.cellData.push({
           value,
@@ -99,7 +97,7 @@ function ProjectsTable() {
   }
 
   return (
-    <div>
+    <div id="table-container">
       <AnTable headers={headers} data={data} />
     </div>
   );
