@@ -6,14 +6,12 @@ import Register from "@components/Register/Register";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { fas } from "@fortawesome/free-solid-svg-icons";
 import ProjectCard from "@pages/ProjectCard/ProjectCard";
-import "./App.css";
 import ApplyToProjectModal from "@components/ApplyToProjectModal/ApplyToProjectModal";
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { RecoilRoot } from "recoil";
 
 import PageHeader from "@components/order/PageHeader";
-import ProjectsTable from "@components/ProjectsTable";
 
 // import projectsAtom from "@recoil/projects";
 
