@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { MultiSelect } from "react-multi-select-component";
 import TextField from "@mui/material/TextField";
-
+import LinearProgress from "@mui/material/LinearProgress";
 import { useRecoilValue, useRecoilState } from "recoil";
 
 import {
@@ -17,16 +17,19 @@ import "./Table.css";
 
 function ProjectsTable() {
   const projects = useRecoilValue(withFilter);
+
   const headerValues = useRecoilValue(withTableHeaderValues);
   const headerLabels = useRecoilValue(projectsHeaderLabels);
-
   const [projectsFilter, setProjectsFilter] =
     useRecoilState(projectsFilterAtom);
 
   const [nameValue, setNameValue] = useState("");
 
   function updateFilter(key, value) {
-    setProjectsFilter({ ...projectsFilter, [key]: value });
+    if (key === "name") {
+      setProjectsFilter({ ...projectsFilter, name: [{ value }] });
+      setNameValue(value);
+    } else setProjectsFilter({ ...projectsFilter, [key]: value });
   }
 
   const headers = [[], []];
@@ -35,7 +38,7 @@ function ProjectsTable() {
     headers[0].push(headerLabels[key]);
     if (key !== "name") {
       const selectOptions = Array.from(values).map((val) => ({
-        label: val,
+        label: key === "progress" ? `${val}%` : val,
         value: val,
       }));
 
@@ -60,7 +63,7 @@ function ProjectsTable() {
             type="search"
             value={nameValue}
             onChange={(e) => {
-              setNameValue(e.target.value);
+              updateFilter("name", e.target.value);
             }}
           />
         ),
@@ -71,9 +74,23 @@ function ProjectsTable() {
   for (const project of projects) {
     const row = { cellData: [] };
     for (const key of Object.keys(headerLabels)) {
-      if (project[key]) {
+      let value = project[key];
+      if (project[key] !== undefined) {
+        if (key === "progress") {
+          value = (
+            <LinearProgress variant="determinate" value={project.progress} />
+          );
+        } else if (Array.isArray(project[key])) {
+          value = (
+            <ul>
+              {project[key].map((v) => (
+                <li>{v}</li>
+              ))}
+            </ul>
+          );
+        }
         row.cellData.push({
-          value: project[key],
+          value,
         });
       }
     }
