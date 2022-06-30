@@ -19,6 +19,7 @@ app.use(express.urlencoded({ extended: false }));
 
 // routers
 const userRouter = require("./src/routes/userRoutes");
+const projectRouter = require("./src/routes/projectRoutes");
 
 // dev logging middleware
 if (process.env.NODE_ENV === "development") {
@@ -27,6 +28,7 @@ if (process.env.NODE_ENV === "development") {
 
 // mount routers
 app.use("/api/v1/users", userRouter);
+app.use("/api/v1/projects", projectRouter);
 
 connectDB();
 

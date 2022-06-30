@@ -42,7 +42,7 @@ const UserSchema = new mongoose.Schema(
     },
     location: String,
     language: [],
-    projectID: String,
+    projectID: [],
 
     organization: {
       // value comes from a put request as response from the frontend once user has created the org
