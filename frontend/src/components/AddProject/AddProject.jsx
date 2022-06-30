@@ -13,6 +13,7 @@ import Grid from "@mui/material/Grid";
 import * as React from "react";
 import { StepContent } from "@mui/material";
 
+import Navbar from "@components/Navbar/Navbar";
 const steps = [
   "General Information",
   "Project Timeline",
@@ -300,68 +301,71 @@ export default function AddProject() {
     }
   }
   return (
-    <Container>
-      <Card sx={{ py: "50px" }}>
-        <Stepper activeStep={activeStep}>
-          {steps.map((label, index) => {
-            const stepProps = {};
-            const labelProps = {};
-            if (isStepOptional(index)) {
-              labelProps.optional = (
-                <Typography variant="caption">Optional</Typography>
+    <>
+      <Container>
+        <Card sx={{ py: "50px" }}>
+          <Stepper activeStep={activeStep}>
+            {steps.map((label, index) => {
+              const stepProps = {};
+              const labelProps = {};
+              if (isStepOptional(index)) {
+                labelProps.optional = (
+                  <Typography variant="caption">Optional</Typography>
+                );
+              }
+              if (isStepSkipped(index)) {
+                stepProps.completed = false;
+              }
+              return (
+                <Step key={label} {...stepProps}>
+                  <StepLabel {...labelProps}>{label}</StepLabel>
+                </Step>
               );
-            }
-            if (isStepSkipped(index)) {
-              stepProps.completed = false;
-            }
-            return (
-              <Step key={label} {...stepProps}>
-                <StepLabel {...labelProps}>{label}</StepLabel>
-              </Step>
-            );
-          })}
-        </Stepper>
-        {activeStep === steps.length ? (
-          <>
-            <Typography sx={{ mt: 2, mb: 1 }}>
-              All steps completed - you&apos;re finished
-            </Typography>
-            <div sx={{ display: "flex", flexDirection: "row", pt: 2 }}>
-              <div sx={{ flex: "1 1 auto" }} />
-              <Button onClick={handleReset}>Reset</Button>
-            </div>
-          </>
-        ) : (
-          <>
-            <Container sx={{ color: "#000" }}>
-              {ActiveStepComponent()}
-            </Container>
+            })}
+          </Stepper>
+          {activeStep === steps.length ? (
+            <>
+              <Typography sx={{ mt: 2, mb: 1 }}>
+                All steps completed - you&apos;re finished
+              </Typography>
+              <div sx={{ display: "flex", flexDirection: "row", pt: 2 }}>
+                <div sx={{ flex: "1 1 auto" }} />
+                <Button onClick={handleReset}>Reset</Button>
+              </div>
+            </>
+          ) : (
+            <>
+              <Container sx={{ color: "#000" }}>
+                {ActiveStepComponent()}
+              </Container>
 
-            {/* BOTTOM BUTTONS */}
+              {/* BOTTOM BUTTONS */}
 
-            <Box sx={{ display: "flex", flexDirection: "row", p: 2 }}>
-              <Button
-                color="inherit"
-                disabled={activeStep === 0}
-                onClick={handleBack}
-                sx={{ mr: "auto" }}
-              >
-                Back
-              </Button>
-              <div sx={{ flex: "1 1 auto" }} />
-              {isStepOptional(activeStep) && (
-                <Button color="inherit" onClick={handleSkip} sx={{ mr: 1 }}>
-                  Skip
+              <Box sx={{ display: "flex", flexDirection: "row", p: 2 }}>
+                <Button
+                  color="inherit"
+                  disabled={activeStep === 0}
+                  onClick={handleBack}
+                  sx={{ mr: "auto" }}
+                >
+                  Back
                 </Button>
-              )}
+                <div sx={{ flex: "1 1 auto" }} />
+                {isStepOptional(activeStep) && (
+                  <Button color="inherit" onClick={handleSkip} sx={{ mr: 1 }}>
+                    Skip
+                  </Button>
+                )}
 
-              <Button onClick={handleNext}>
-                {activeStep === steps.length - 1 ? "Finish" : "Next"}
-              </Button>
-            </Box>
-          </>
-        )}
-      </Card>
-    </Container>
+                <Button onClick={handleNext}>
+                  {activeStep === steps.length - 1 ? "Finish" : "Next"}
+                </Button>
+              </Box>
+            </>
+          )}
+        </Card>
+      </Container>
+      <Navbar />
+    </>
   );
 }
