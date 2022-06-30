@@ -26,7 +26,7 @@ import Fab from "@mui/material/Fab";
 import Grid from "@mui/material/Grid";
 import { styled } from "@mui/material/styles";
 import Toolbar from "@mui/material/Toolbar";
-import { Link } from "react-router-dom";
+/* import { Link } from "react-router-dom"; */
 import "./Navbar.css";
 
 const StyledFab = styled(Fab)({
@@ -48,12 +48,14 @@ export default function Navbar() {
       <Toolbar className="tb22">
         <Grid container display="flex" direction="row" alignItems="center">
           <Grid item className="grid-item-a" xs={6} textAlign="center">
-            <Link sx={{ width: "100%" }} to="/">
-              User
-            </Link>
+            <a href="/users" style={{ width: "100%" }}>
+              Users
+            </a>
           </Grid>
           <Grid item xs={6} className="grid-item-b" textAlign="center">
-            <Link to="/">Project </Link>
+            <a href="/" style={{ width: "100%" }}>
+              Projects
+            </a>
           </Grid>
         </Grid>
 
