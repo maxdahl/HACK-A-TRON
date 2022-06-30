@@ -2,6 +2,8 @@ import Navbar from "@components/Navbar/Navbar";
 import LinearProgress from "@mui/material/LinearProgress";
 import TextField from "@mui/material/TextField";
 import ProjectCard from "@pages/projectCard/ProjectCard";
+import "./index.css";
+
 import { useState } from "react";
 import { MultiSelect } from "react-multi-select-component";
 import { Link } from "react-router-dom";
@@ -130,8 +132,10 @@ function ProjectsTable() {
       <PageTitleWrapper>
         <PageHeader location="Pojects Overview" />
       </PageTitleWrapper>
-      <div id="table-container">
-        <AnTable headers={headers} data={data} />
+      <div className="project-card">
+        <div className="container-project-card">
+          <AnTable headers={headers} data={data} />
+        </div>
       </div>
       <Navbar />
     </>

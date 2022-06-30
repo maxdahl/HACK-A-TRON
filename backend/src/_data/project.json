@@ -1,17 +1,27 @@
 [
   {
-    "name": "hackathon",
+    "name": "Project 1",
     "location": "Berlin",
-    "field": "pharmaceutical",
-    "progress": [5, 10],
-    "techStack": ["react", "node", "typescript"],
+    "field": "tech",
+    "progress": [0, 10],
+    "openPositions": ["Developer", "QA"],
     "partners": ["IBM", "Intel"],
     "status": "string",
-    "description": "relational database for all clients",
-    "openPositions": ["Developer", "QA"],
-    "projectInfo": { "Figma": "", "Github": "" },
-    "startingDate": "1st jan 2022",
-    "duration": "5 months"
+    "techStack": ["vuejs", "flask", "python"],
+    "startDate": "1st jan 2022",
+    "duration": "5 months",
+    "description": "implementing login and register",
+    "client": {
+      "clientName": "",
+      "clientPhone": "",
+      "clientEmail": ""
+    },
+    "partner": {
+      "partnerName": "",
+      "partnerPhone": "",
+      "partnerEmail": ""
+    },
+    "projectInfo": ""
   },
   {
     "name": "hackathon",
