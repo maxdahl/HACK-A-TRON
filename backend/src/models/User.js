@@ -27,6 +27,13 @@ const UserSchema = new mongoose.Schema(
         "Please add a valid email",
       ],
     },
+    userName: {
+      type: String,
+      required: [true],
+      min: 4,
+      max: 24,
+      unique: true,
+    },
     role: {
       type: String,
       required: [true, "Please add a role"],
@@ -37,7 +44,8 @@ const UserSchema = new mongoose.Schema(
     password: {
       type: String,
       required: [true, "Please add a password"],
-      minlength: 6,
+      minlength: 8,
+      maxlength: 24,
       select: false, // when we get a user through the api is not going to show the password
     },
     location: String,

@@ -4,7 +4,7 @@ import { useRef, useState, useEffect /* useContext */ } from "react";
 
 import axios from "../axios";
 
-const LOGIN_URL = "/auth";
+const LOGIN_URL = "/login";
 
 const Login = () => {
   /*   const { setAuth } = useContext(AuthContext); */
@@ -29,18 +29,18 @@ const Login = () => {
 
     try {
       const response = await axios.post(
-        LOGIN_URL,
+        LOGIN_URL, // const LOGIN_URL = "/login";
         JSON.stringify({ user, pwd }),
         {
           headers: { "Content-Type": "application/json" },
           withCredentials: true,
         }
       );
-      /* console.log(JSON.stringify(response?.data)); */
+      console.warn(JSON.stringify(response?.data));
       console.warn(JSON.stringify(response));
-      /*      const accessToken = response?.data?.accessToken;
-      const roles = response?.data?.roles;
-      setAuth({ user, pwd, roles, accessToken }); */
+      /* const accessToken = response?.data?.accessToken;
+      const roles = response?.data?.roles; */
+      /* setAuth({ user, pwd, roles, accessToken }); */
       setUser("");
       setPwd("");
       setSuccess(true);
@@ -65,7 +65,7 @@ const Login = () => {
           <h1 id="font1">You are logged in!</h1>
           <br />
           <p>
-            <a href="/#">Go to Home</a>
+            <a href="/">Go to Home</a>
           </p>
         </section>
       ) : (
@@ -108,7 +108,7 @@ const Login = () => {
             <br />
             <span className="line">
               {/* put router link here */}
-              <a href="/#">Sign Up</a>
+              <a href="/register">Sign Up</a>
             </span>
           </p>
         </section>
