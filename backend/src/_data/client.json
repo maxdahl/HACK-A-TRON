@@ -1,1 +1,13 @@
-[{}]
+[
+  {
+    "clientName": "",
+    "clientEmail": "",
+    "clientPhone": "",
+    "clientAddress": "",
+    "client_Financials": "",
+    "registrationNo": "",
+    "fiscalNo": "",
+    "Iban": "",
+    "bankName": ""
+  }
+]

@@ -14,21 +14,16 @@ const ProjectSchema = new mongoose.Schema(
       trim: true,
       default: "",
     },
-    progress: {
-      type: String,
-      enum: ["Ideation", "UI/UX", "Development", "Production", "Testing", null],
-    },
+    field: String,
+    progress: [],
     techStack: [],
     partners: [],
-    status: [],
-    estimatedTime: String,
+    status: String,
     description: String,
     openPosition: String,
-
-    organization: {
-      // value comes from a put request as response from the frontend once user has created the org
-      type: String,
-    },
+    projectInfo: {},
+    startingDate: String,
+    duration: String,
   },
   { timestamps: true }
 );
