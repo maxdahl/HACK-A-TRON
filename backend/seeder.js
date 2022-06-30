@@ -8,7 +8,7 @@ const colors = require("colors");
 dotenv.config();
 
 // load models
-const User = require("./src/models/User");
+// const User = require("./src/models/User");
 const Project = require("./src/models/Project");
 
 // connect to DB
@@ -19,9 +19,9 @@ mongoose.connect(process.env.MONGO_URI, {
 });
 
 // read JSON files
-const users = JSON.parse(
-  fs.readFileSync(`${__dirname}/src/_data/user.json`, "utf-8")
-);
+// const users = JSON.parse(
+//   fs.readFileSync(`${__dirname}/src/_data/user.json`, "utf-8")
+// );
 const projects = JSON.parse(
   fs.readFileSync(`${__dirname}/src/_data/project.json`, "utf-8")
 );
@@ -42,7 +42,8 @@ const importData = async () => {
 // delete data
 const deleteData = async () => {
   try {
-    await User.deleteMany();
+    // await User.deleteMany();
+    await Project.deleteMany();
 
     console.log("Data Destroyed...".red.inverse);
     process.exit();
