@@ -10,7 +10,7 @@ import axios from "../axios";
 const USER_REGEX = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 // eslint-disable-next-line
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
-const REGISTER_URL = "/register";
+const REGISTER_URL = "/api/v1/users/register";
 
 function Register() {
   const userRef = useRef();
@@ -19,6 +19,12 @@ function Register() {
   const [user, setUser] = useState("");
   const [validEmail, setValidEmail] = useState(false);
   const [userFocus, setUserFocus] = useState(false);
+
+  const [lastName, setLastName] = useState();
+  const [firstName, setFirstName] = useState();
+  const [role, setRole] = useState();
+  const [location, setLocation] = useState();
+  const [language, setLanguage] = useState();
 
   const [pwd, setPwd] = useState("");
   const [validPwd, setValidPwd] = useState(false);
@@ -67,7 +73,7 @@ function Register() {
         }
       );
       console.warn(response?.data);
-      console.warn(response?.accessToken);
+      // console.warn(response?.accessToken);
       console.warn(JSON.stringify(response));
       setSuccess(true);
       // clear state and controlled inputs
@@ -75,6 +81,11 @@ function Register() {
       setUser("");
       setPwd("");
       setMatchPwd("");
+      setLanguage("");
+      setFirstName("");
+      setLastName("");
+      setLocation("");
+      setRole("");
     } catch (err) {
       if (!err?.response) {
         setErrMsg("No Server Response");
@@ -109,6 +120,71 @@ function Register() {
           </p>
           <h1 id="font1">Register</h1>
           <form onSubmit={handleSubmit}>
+            <label id="font2" htmlFor="firstname">
+              First name:
+              <input
+                type="text"
+                id="firstname"
+                ref={userRef}
+                onChange={(e) => setFirstName(e.target.value)}
+                value={firstName}
+                required
+                onFocus={() => setUserFocus(true)}
+                onBlur={() => setUserFocus(false)}
+              />
+            </label>
+            <label id="font2" htmlFor="lastname">
+              Last name:
+              <input
+                type="text"
+                id="lastname"
+                ref={userRef}
+                onChange={(e) => setLastName(e.target.value)}
+                value={lastName}
+                required
+                onFocus={() => setUserFocus(true)}
+                onBlur={() => setUserFocus(false)}
+              />
+            </label>
+            <label id="font2" htmlFor="role">
+              Role:
+              <input
+                type="text"
+                id="role"
+                ref={userRef}
+                onChange={(e) => setRole(e.target.value)}
+                value={role}
+                required
+                onFocus={() => setUserFocus(true)}
+                onBlur={() => setUserFocus(false)}
+              />
+            </label>
+            <label id="font2" htmlFor="location">
+              Location:
+              <input
+                type="text"
+                id="location"
+                ref={userRef}
+                onChange={(e) => setLocation(e.target.value)}
+                value={location}
+                required
+                onFocus={() => setUserFocus(true)}
+                onBlur={() => setUserFocus(false)}
+              />
+            </label>
+            <label id="font2" htmlFor="language">
+              Language:
+              <input
+                type="text"
+                id="language"
+                ref={userRef}
+                onChange={(e) => setLanguage(e.target.value)}
+                value={language}
+                onFocus={() => setUserFocus(true)}
+                onBlur={() => setUserFocus(false)}
+              />
+            </label>
+
             <label id="font2" htmlFor="username">
               Email:
               <FontAwesomeIcon
