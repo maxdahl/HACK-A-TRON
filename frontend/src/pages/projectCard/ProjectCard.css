@@ -37,9 +37,9 @@ a {
   width: 80%;
 }
 .button-apply {
-  color: #fff;
-  background-color: #0069d9;
-  border-color: #0062cc;
+  color: #000;
+  background-color: #e77620;
+  border-color: #e77620;
   border-radius: 10px;
   font-size: 22px;
   width: 153px;
@@ -55,4 +55,9 @@ a {
 p {
   display: flex;
   align-items: center;
+  font-weight: bold;
+}
+span {
+  padding-left: 7px;
+  font-weight: normal;
 }
