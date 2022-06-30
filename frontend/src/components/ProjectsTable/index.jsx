@@ -1,7 +1,9 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import { MultiSelect } from "react-multi-select-component";
 import TextField from "@mui/material/TextField";
 import LinearProgress from "@mui/material/LinearProgress";
+import ProjectCard from "@pages/projectCard/ProjectCard";
 import { useRecoilValue, useRecoilState } from "recoil";
 
 import {
@@ -24,6 +26,7 @@ function ProjectsTable() {
     useRecoilState(projectsFilterAtom);
 
   const [nameValue, setNameValue] = useState("");
+  const [currentProject, setCurrentProject] = useState(null);
 
   function updateFilter(key, value) {
     if (key === "name") {
@@ -80,7 +83,12 @@ function ProjectsTable() {
     for (const key of Object.keys(headerLabels)) {
       let value = project[key];
       if (project[key] !== undefined) {
-        if (key === "progress") {
+        if (key === "name") {
+          value = (
+            // eslint-disable-next-line
+            <Link to="" onClick={() => { setCurrentProject(project); }}>{project.name}</Link>
+          );
+        } else if (key === "progress") {
           value = (
             <LinearProgress variant="determinate" value={project.progress} />
           );
@@ -94,6 +102,17 @@ function ProjectsTable() {
     }
 
     data.push(row);
+  }
+
+  if (currentProject !== null) {
+    return (
+      <ProjectCard
+        project={currentProject}
+        onClose={() => {
+          setCurrentProject(null);
+        }}
+      />
+    );
   }
 
   return (

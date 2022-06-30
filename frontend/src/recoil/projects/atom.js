@@ -8,7 +8,6 @@ const projectsAtom = atom({
     ({ setSelf }) => {
       const fetchData = async () => {
         const res = await axios.get("http://localhost:8000/api/v1/projects");
-        console.log(res.data.data.progress);
         setSelf(res.data.data);
       };
 
