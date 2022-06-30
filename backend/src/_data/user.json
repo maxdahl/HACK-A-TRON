@@ -1,0 +1,20 @@
+[
+  {
+    "firstname": "John",
+    "lastname": "Doe",
+    "email": "john@mail.com",
+    "location": "Berlin",
+    "language": ["C", "C++", "Javascript"],
+    "role": "admin",
+    "projectID": ["98789675"]
+  },
+  {
+    "firstName": "Jane",
+    "lastName": "Doe",
+    "email": "jane@mail.com",
+    "location": "Berlin",
+    "language": ["C", "C++", "Javascript"],
+    "role": "worker",
+    "projectID": ["98789675"]
+  }
+]
