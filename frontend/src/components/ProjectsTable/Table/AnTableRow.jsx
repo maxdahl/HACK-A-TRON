@@ -22,6 +22,7 @@ function getCellData(cellData) {
       const className = cell.className || "";
       const isEditable = cell.isEditable || false;
       const sx = cell.sx || null;
+      // eslint-disable-next-line
       const onValueChange = cell.onValueChange || function () {};
 
       cells.push(
