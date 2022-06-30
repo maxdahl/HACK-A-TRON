@@ -8,6 +8,7 @@ a {
   width: 100%;
   box-sizing: border-box;
   color: #666;
+  margin-bottom: 190px;
 }
 .container-project-card {
   display: flex;
@@ -64,7 +65,6 @@ a {
   text-align: center;
   margin-top: 68px;
   margin-bottom: 66px;
-  line-height: 52px;
 }
 .icon-project {
   font-size: 29px;

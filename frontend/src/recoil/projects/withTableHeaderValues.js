@@ -1,11 +1,11 @@
 import { selector } from "recoil";
-import projectsAtom from "./atom";
+import withProgress from "./withProgress";
 import projectsHeaderLables from "./headerLabels";
 
 const projectsWithTableHeaderValues = selector({
   key: "projectsWithTableHeaderValues",
   get: ({ get }) => {
-    const projects = get(projectsAtom);
+    const projects = get(withProgress);
     const headers = get(projectsHeaderLables);
     const headerValues = {};
 
