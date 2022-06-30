@@ -9,13 +9,13 @@ const Theme = createTheme({
       main: "#E77620",
     },
     typography: {
-      fontFamily: 'Quicksand',
+      fontFamily: "Quicksand",
       fontWeight: 400,
       fontWeightRegular: 500,
       fontWeightMedium: 600,
       fontWeightBold: 700,
-    }
-  }
+    },
+  },
 });
 
 export default Theme;
