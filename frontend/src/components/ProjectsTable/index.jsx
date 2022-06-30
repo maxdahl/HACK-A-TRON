@@ -5,6 +5,7 @@ import TextField from "@mui/material/TextField";
 import LinearProgress from "@mui/material/LinearProgress";
 import ProjectCard from "@pages/projectCard/ProjectCard";
 import { useRecoilValue, useRecoilState } from "recoil";
+import Navbar from "@components/Navbar/Navbar";
 
 import {
   withFilter,
@@ -123,9 +124,12 @@ function ProjectsTable() {
   }
 
   return (
-    <div id="table-container">
-      <AnTable headers={headers} data={data} />
-    </div>
+    <>
+      <div id="table-container">
+        <AnTable headers={headers} data={data} />
+      </div>
+      <Navbar />
+    </>
   );
 }
 

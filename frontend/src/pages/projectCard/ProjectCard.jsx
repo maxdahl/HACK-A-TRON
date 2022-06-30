@@ -1,27 +1,13 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import { Button } from "@mui/material";
+import Navbar from "@components/Navbar/Navbar";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+
+import ApplyToProjectModal from "@components/ApplyToProjectModal/ApplyToProjectModal";
 import ProgressBar from "../../components/progressbar/ProgressBar";
 import "./ProjectCard.css";
 
-function ProjectCard({ project, onClose }) {
+function ProjectCard({ project /* , onClose */ }) {
   return (
     <>
-      <div style={{ width: "90%", textAlign: "right" }}>
-        <Button
-          sx={{
-            mt: { xs: 2, md: 0, color: "#0A1E30" },
-          }}
-          /*           onClick={navigateToClientOverview} */
-          variant="outlined"
-          startIcon={<ArrowBackIcon fontSize="small" />}
-          onClick={onClose}
-        >
-          Back to Project Overview
-        </Button>
-      </div>
       <div className="project-card">
         <div className="container-project-card">
           <h4 className="header-title">
@@ -119,12 +105,12 @@ function ProjectCard({ project, onClose }) {
             </div>
           </div>
           <div className="button-container">
-            <Link to="/" className="button-apply">
-              Apply Job <FontAwesomeIcon icon="fa-solid fa-angle-right" />
-            </Link>
+            <ApplyToProjectModal project={project} />
           </div>
         </div>
       </div>
+
+      <Navbar />
     </>
   );
 }

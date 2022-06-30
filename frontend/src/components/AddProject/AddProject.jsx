@@ -12,7 +12,9 @@ import TextField from "@mui/material/TextField";
 import Grid from "@mui/material/Grid";
 import * as React from "react";
 import { StepContent } from "@mui/material";
+import { makeStyles } from "@mui/styles";
 
+import Navbar from "@components/Navbar/Navbar";
 const steps = [
   "General Information",
   "Project Timeline",
@@ -20,6 +22,31 @@ const steps = [
   "Partne Details",
   "Project Description",
 ];
+
+const formValue = {
+  name: "",
+  location: "",
+  field: "",
+  progress: "",
+  openPosition: "",
+  partners: "",
+  status: "",
+  techStack: "",
+  startDate: "",
+  duration: "",
+  description: "",
+  client: {
+    clientName: "",
+    clientPhone: "",
+    clientEmail: "",
+  },
+  partner: {
+    partnerName: "",
+    partnerPhone: "",
+    partnerEmail: "",
+  },
+  projectInfo: "",
+};
 
 export default function AddProject() {
   const [activeStep, setActiveStep] = React.useState(0);
@@ -93,6 +120,11 @@ export default function AddProject() {
                   placeholder="Project Name ..."
                   id="projectName"
                   size="medium"
+                  name="name"
+                  onChange={(e) => {
+                    formValue.name = e.target.value;
+                    console.log(formValue);
+                  }}
                 />
               </Grid>
               <Grid item lg={6}>
@@ -100,15 +132,25 @@ export default function AddProject() {
                   fullWidth
                   varient="outlined"
                   placeholder="Category ..."
-                  id="category"
+                  id="field"
+                  name="field"
+                  onChange={(e) => {
+                    formValue.field = e.target.value;
+                    console.log(formValue);
+                  }}
                 />
               </Grid>
               <Grid item lg={6}>
                 <TextField
+                  name="location"
                   fullWidth
                   varient="outlined"
                   placeholder="Location..."
                   id="location"
+                  onChange={(e) => {
+                    formValue.location = e.target.value;
+                    console.log(formValue);
+                  }}
                 />
               </Grid>
               <Grid item lg={6}>
@@ -117,6 +159,10 @@ export default function AddProject() {
                   varient="outlined"
                   placeholder="open Positions ..."
                   id="openPosition"
+                  onChange={(e) => {
+                    formValue.openPosition = e.target.value;
+                    console.log(formValue);
+                  }}
                 />
               </Grid>
               <Grid item lg={12}>
@@ -125,6 +171,10 @@ export default function AddProject() {
                   varient="outlined"
                   placeholder="Tech Stack ..."
                   id="techStack"
+                  onChange={(e) => {
+                    formValue.techStack = e.target.value;
+                    console.log(formValue);
+                  }}
                 />
               </Grid>
             </Grid>
@@ -155,6 +205,10 @@ export default function AddProject() {
                   placeholder="Start Date ..."
                   id="projectName"
                   size="medium"
+                  onChange={(e) => {
+                    formValue.startDate = e.target.value;
+                    console.log(formValue);
+                  }}
                 />
               </Grid>
               <Grid item lg={12}>
@@ -163,6 +217,10 @@ export default function AddProject() {
                   varient="outlined"
                   placeholder="Category ..."
                   id="category"
+                  onChange={(e) => {
+                    formValue.duration = e.target.value;
+                    console.log(formValue);
+                  }}
                 />
               </Grid>
             </Grid>
@@ -194,6 +252,10 @@ export default function AddProject() {
                   placeholder="Client Name ..."
                   id="clientName"
                   size="medium"
+                  onChange={(e) => {
+                    formValue.clientName = e.target.value;
+                    console.log(formValue);
+                  }}
                 />
               </Grid>
               <Grid item lg={6}>
@@ -202,6 +264,10 @@ export default function AddProject() {
                   varient="outlined"
                   placeholder="Phone ..."
                   id="category"
+                  onChange={(e) => {
+                    formValue.clientPhone = e.target.value;
+                    console.log(formValue);
+                  }}
                 />
               </Grid>
               <Grid item lg={6}>
@@ -210,6 +276,10 @@ export default function AddProject() {
                   varient="outlined"
                   placeholder="E-Mail ..."
                   id="category"
+                  onChange={(e) => {
+                    formValue.clientEmail = e.target.value;
+                    console.log(formValue);
+                  }}
                 />
               </Grid>
             </Grid>
@@ -238,9 +308,13 @@ export default function AddProject() {
                 <TextField
                   fullWidth
                   varient="outlined"
-                  placeholder="Client Name ..."
-                  id="clientName"
+                  placeholder="Partner Name ..."
+                  id="partnerName"
                   size="medium"
+                  onChange={(e) => {
+                    formValue.partnerName = e.target.value;
+                    console.log(formValue);
+                  }}
                 />
               </Grid>
               <Grid item lg={6}>
@@ -249,6 +323,10 @@ export default function AddProject() {
                   varient="outlined"
                   placeholder="Phone ..."
                   id="partnerPhone"
+                  onChange={(e) => {
+                    formValue.partnerPhone = e.target.value;
+                    console.log(formValue);
+                  }}
                 />
               </Grid>
               <Grid item lg={6}>
@@ -257,6 +335,10 @@ export default function AddProject() {
                   varient="outlined"
                   placeholder="E-Mail ..."
                   id="patnerEmail"
+                  onChange={(e) => {
+                    formValue.partnerEmail = e.target.value;
+                    console.log(formValue);
+                  }}
                 />
               </Grid>
             </Grid>
@@ -291,77 +373,100 @@ export default function AddProject() {
                     size="medium"
                     multiline
                     rows={4}
+                    onChange={(e) => {
+                      formValue.description = e.target.value;
+                      console.log(formValue);
+                    }}
                   />
                 </Grid>
               </Grid>
             </CardContent>
           </Card>
         );
+        break;
     }
   }
+  const useStyles = makeStyles(() => ({
+    root: {
+      "& .Mui-active MuiStepIcon-active": { color: "#E77620" },
+      "& .MuiStepIcon-completed": { color: "green" },
+      "& .Mui-disabled .MuiStepIcon-root": { color: "cyan" },
+    },
+  }));
+  const classes = useStyles();
   return (
-    <Container>
-      <Card sx={{ py: "50px" }}>
-        <Stepper activeStep={activeStep}>
-          {steps.map((label, index) => {
-            const stepProps = {};
-            const labelProps = {};
-            if (isStepOptional(index)) {
-              labelProps.optional = (
-                <Typography variant="caption">Optional</Typography>
+    <>
+      <Container>
+        <Card sx={{ py: "50px" }}>
+          <Stepper className={classes.root} activeStep={activeStep}>
+            {steps.map((label, index) => {
+              const stepProps = {};
+              const labelProps = {};
+              if (isStepOptional(index)) {
+                labelProps.optional = (
+                  <Typography variant="caption">Optional</Typography>
+                );
+              }
+              if (isStepSkipped(index)) {
+                stepProps.completed = false;
+              }
+              return (
+                <Step
+                  className={classes.root}
+                  key={label}
+                  {...stepProps}
+                  sx={{ backgroundColor: "#0000" }}
+                >
+                  <StepLabel className={classes.root} {...labelProps}>
+                    {label}
+                  </StepLabel>
+                </Step>
               );
-            }
-            if (isStepSkipped(index)) {
-              stepProps.completed = false;
-            }
-            return (
-              <Step key={label} {...stepProps}>
-                <StepLabel {...labelProps}>{label}</StepLabel>
-              </Step>
-            );
-          })}
-        </Stepper>
-        {activeStep === steps.length ? (
-          <>
-            <Typography sx={{ mt: 2, mb: 1 }}>
-              All steps completed - you&apos;re finished
-            </Typography>
-            <div sx={{ display: "flex", flexDirection: "row", pt: 2 }}>
-              <div sx={{ flex: "1 1 auto" }} />
-              <Button onClick={handleReset}>Reset</Button>
-            </div>
-          </>
-        ) : (
-          <>
-            <Container sx={{ color: "#000" }}>
-              {ActiveStepComponent()}
-            </Container>
+            })}
+          </Stepper>
+          {activeStep === steps.length ? (
+            <>
+              <Typography sx={{ mt: 2, mb: 1 }}>
+                All steps completed - you&apos;re finished
+              </Typography>
+              <div sx={{ display: "flex", flexDirection: "row", pt: 2 }}>
+                <div sx={{ flex: "1 1 auto" }} />
+                <Button onClick={handleReset}>Reset</Button>
+              </div>
+            </>
+          ) : (
+            <>
+              <Container sx={{ color: "#000" }}>
+                {ActiveStepComponent()}
+              </Container>
 
-            {/* BOTTOM BUTTONS */}
+              {/* BOTTOM BUTTONS */}
 
-            <Box sx={{ display: "flex", flexDirection: "row", p: 2 }}>
-              <Button
-                color="inherit"
-                disabled={activeStep === 0}
-                onClick={handleBack}
-                sx={{ mr: "auto" }}
-              >
-                Back
-              </Button>
-              <div sx={{ flex: "1 1 auto" }} />
-              {isStepOptional(activeStep) && (
-                <Button color="inherit" onClick={handleSkip} sx={{ mr: 1 }}>
-                  Skip
+              <Box sx={{ display: "flex", flexDirection: "row", p: 2 }}>
+                <Button
+                  color="inherit"
+                  disabled={activeStep === 0}
+                  onClick={handleBack}
+                  sx={{ mr: "auto" }}
+                >
+                  Back
                 </Button>
-              )}
+                <div sx={{ flex: "1 1 auto" }} />
+                {isStepOptional(activeStep) && (
+                  <Button color="inherit" onClick={handleSkip} sx={{ mr: 1 }}>
+                    Skip
+                  </Button>
+                )}
 
-              <Button onClick={handleNext}>
-                {activeStep === steps.length - 1 ? "Finish" : "Next"}
-              </Button>
-            </Box>
-          </>
-        )}
-      </Card>
-    </Container>
+                <Button onClick={handleNext}>
+                  {activeStep === steps.length - 1 ? "Finish" : "Next"}
+                </Button>
+              </Box>
+            </>
+          )}
+        </Card>
+      </Container>
+      <Navbar />
+    </>
   );
 }
