@@ -86,7 +86,6 @@ const Login = () => {
               >
                 {errMsg}
               </p>
-              <h1 id="font1">Sign In</h1>
               <form onSubmit={handleSubmit}>
                 <label id="font2" htmlFor="username">
                   <input

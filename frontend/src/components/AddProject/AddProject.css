@@ -1,0 +1,31 @@
+a {
+  text-decoration: none;
+}
+.project-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  box-sizing: border-box;
+  color: #666;
+}
+.container-project-card {
+  display: flex;
+  padding-top: 75px;
+  padding-bottom: 75px;
+  flex-direction: column;
+  align-items: center;
+  width: 90%;
+  box-sizing: border-box;
+  background-color: #fff;
+  box-shadow: rgb(0 0 0 / 35%) 0px 5px 15px;
+}
+
+.container-inner {
+  display: flex;
+  padding-top: 75px;
+  flex-direction: column;
+  align-items: center;
+  width: 90%;
+  box-sizing: border-box;
+}

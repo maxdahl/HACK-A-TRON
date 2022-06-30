@@ -17,6 +17,7 @@ import PageTitleWrapper from "./order/PageTitleWrapper";
 import PageHeader from "./order/PageHeader";
 
 import Navbar from "@components/Navbar/Navbar";
+import "./AddProject.css";
 const steps = [
   "General Information",
   "Project Timeline",
@@ -55,7 +56,7 @@ export default function AddProject() {
   const [skipped, setSkipped] = React.useState(new Set());
 
   const isStepOptional = (step) => {
-    return step === 1;
+    return step === 3;
   };
 
   const isStepSkipped = (step) => {
@@ -103,10 +104,11 @@ export default function AddProject() {
           <>
             <Box
               sx={{
-                mt: "10px",
+                mt: "20px",
                 mb: "30px",
                 display: "flex",
                 alignItems: "center",
+                width: "100%",
                 justifyContent: "center",
                 backgroundColor: "#DDE7F6",
                 height: "100px",
@@ -193,6 +195,7 @@ export default function AddProject() {
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
+                width: "100%",
                 backgroundColor: "#DDE7F6",
                 height: "100px",
               }}
@@ -229,7 +232,6 @@ export default function AddProject() {
           </>
         );
         break;
-
       case 2:
         return (
           <>
@@ -237,6 +239,7 @@ export default function AddProject() {
               sx={{
                 mt: "10px",
                 mb: "30px",
+                width: "100%",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
@@ -288,7 +291,6 @@ export default function AddProject() {
           </>
         );
         break;
-
       case 3:
         return (
           <>
@@ -296,6 +298,7 @@ export default function AddProject() {
               sx={{
                 mt: "10px",
                 mb: "30px",
+                width: "100%",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
@@ -347,7 +350,6 @@ export default function AddProject() {
           </>
         );
         break;
-
       case 4:
         return (
           <>
@@ -355,6 +357,7 @@ export default function AddProject() {
               sx={{
                 mt: "10px",
                 mb: "30px",
+                width: "100%",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
@@ -390,85 +393,89 @@ export default function AddProject() {
     root: {
       "& .Mui-active MuiStepIcon-active": { color: "#E77620" },
       "& .MuiStepIcon-completed": { color: "green" },
-      "& .Mui-disabled .MuiStepIcon-root": { color: "cyan" },
+      "& .Mui-disabled .MuiStepIcon-root": { color: "#E77620" },
     },
   }));
   const classes = useStyles();
   return (
     <>
       <PageTitleWrapper>
-        <PageHeader location="Create new Project" />
+        <PageHeader location="Create new project" />
       </PageTitleWrapper>
-      <Container m={0}>
-        <Card sx={{ py: "50px", mx: "0" }}>
-          <Stepper className={classes.root} activeStep={activeStep}>
-            {steps.map((label, index) => {
-              const stepProps = {};
-              const labelProps = {};
-              if (isStepOptional(index)) {
-                labelProps.optional = (
-                  <Typography variant="caption">Optional</Typography>
+
+      <div className="project-card">
+        <div className="container-project-card">
+          <div className="container-inner">
+            <Stepper className={classes.root} activeStep={activeStep}>
+              {steps.map((label, index) => {
+                const stepProps = {};
+                const labelProps = {};
+                if (isStepOptional(index)) {
+                  labelProps.optional = (
+                    <Typography variant="caption">Optional</Typography>
+                  );
+                }
+                if (isStepSkipped(index)) {
+                  stepProps.completed = false;
+                }
+                return (
+                  <Step
+                    className={classes.root}
+                    key={label}
+                    {...stepProps}
+                    sx={{ backgroundColor: "#0000" }}
+                  >
+                    <StepLabel
+                      className={classes.root}
+                      {...labelProps}
+                      sx={{ width: "100%" }}
+                    >
+                      {label}
+                    </StepLabel>
+                  </Step>
                 );
-              }
-              if (isStepSkipped(index)) {
-                stepProps.completed = false;
-              }
-              return (
-                <Step
-                  className={classes.root}
-                  key={label}
-                  {...stepProps}
-                  sx={{ backgroundColor: "#0000" }}
-                >
-                  <StepLabel className={classes.root} {...labelProps}>
-                    {label}
-                  </StepLabel>
-                </Step>
-              );
-            })}
-          </Stepper>
-          {activeStep === steps.length ? (
-            <>
-              <Typography sx={{ mt: 2, mb: 1 }}>
-                All steps completed - you&apos;re finished
-              </Typography>
-              <div sx={{ display: "flex", flexDirection: "row", pt: 2 }}>
-                <div sx={{ flex: "1 1 auto" }} />
-                <Button onClick={handleReset}>Reset</Button>
-              </div>
-            </>
-          ) : (
-            <>
-              <Container sx={{ color: "#000" }}>
+              })}
+            </Stepper>
+            {activeStep === steps.length ? (
+              <>
+                <Typography sx={{ mt: 2, mb: 1 }}>
+                  All steps completed - you&apos;re finished
+                </Typography>
+                <div sx={{ display: "flex", flexDirection: "row", pt: 2 }}>
+                  <div sx={{ flex: "1 1 auto" }} />
+                  <Button onClick={handleReset}>Reset</Button>
+                </div>
+              </>
+            ) : (
+              <>
                 {ActiveStepComponent()}
-              </Container>
 
-              {/* BOTTOM BUTTONS */}
-
-              <Box sx={{ display: "flex", flexDirection: "row", p: 2 }}>
-                <Button
-                  color="inherit"
-                  disabled={activeStep === 0}
-                  onClick={handleBack}
-                  sx={{ mr: "auto" }}
-                >
-                  Back
-                </Button>
-                <div sx={{ flex: "1 1 auto" }} />
-                {isStepOptional(activeStep) && (
-                  <Button color="inherit" onClick={handleSkip} sx={{ mr: 1 }}>
-                    Skip
+                {/* BOTTOM BUTTONS */}
+                <Box sx={{ display: "flex", flexDirection: "row", p: 2 }}>
+                  <Button
+                    color="inherit"
+                    disabled={activeStep === 0}
+                    onClick={handleBack}
+                    sx={{ mr: "auto" }}
+                  >
+                    Back
                   </Button>
-                )}
+                  <div sx={{ flex: "1 1 auto" }} />
+                  {isStepOptional(activeStep) && (
+                    <Button color="inherit" onClick={handleSkip} sx={{ mr: 1 }}>
+                      Skip
+                    </Button>
+                  )}
 
-                <Button onClick={handleNext}>
-                  {activeStep === steps.length - 1 ? "Finish" : "Next"}
-                </Button>
-              </Box>
-            </>
-          )}
-        </Card>
-      </Container>
+                  <Button onClick={handleNext}>
+                    {activeStep === steps.length - 1 ? "Finish" : "Next"}
+                  </Button>
+                </Box>
+              </>
+            )}
+          </div>
+        </div>
+      </div>
       <Navbar />
     </>
   );

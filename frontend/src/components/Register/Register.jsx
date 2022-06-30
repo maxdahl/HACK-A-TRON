@@ -142,7 +142,6 @@ function Register() {
                   >
                     {errMsg}
                   </p>
-                  <h1 id="font1">Register</h1>
                   <form onSubmit={handleSubmit}>
                     <label id="font2" htmlFor="firstname">
                       <input
