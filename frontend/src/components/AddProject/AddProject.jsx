@@ -395,50 +395,50 @@ export default function AddProject() {
   }));
   const classes = useStyles();
   return (
-    <Container>
-      <Card sx={{ py: "50px" }}>
-        <Stepper className={classes.root} activeStep={activeStep}>
-          {steps.map((label, index) => {
-            const stepProps = {};
-            const labelProps = {};
-            if (isStepOptional(index)) {
-              labelProps.optional = (
-                <Typography variant="caption">Optional</Typography>
+    <>
+      <Container>
+        <Card sx={{ py: "50px" }}>
+          <Stepper className={classes.root} activeStep={activeStep}>
+            {steps.map((label, index) => {
+              const stepProps = {};
+              const labelProps = {};
+              if (isStepOptional(index)) {
+                labelProps.optional = (
+                  <Typography variant="caption">Optional</Typography>
+                );
+              }
+              if (isStepSkipped(index)) {
+                stepProps.completed = false;
+              }
+              return (
+                <Step
+                  className={classes.root}
+                  key={label}
+                  {...stepProps}
+                  sx={{ backgroundColor: "#0000" }}
+                >
+                  <StepLabel className={classes.root} {...labelProps}>
+                    {label}
+                  </StepLabel>
+                </Step>
               );
-            }
-            if (isStepSkipped(index)) {
-              stepProps.completed = false;
-            }
-            return (
-              <Step
-                className={classes.root}
-                key={label}
-                {...stepProps}
-                sx={{ backgroundColor: "#0000" }}
-              >
-                <StepLabel className={classes.root} {...labelProps}>
-                  {label}
-                </StepLabel>
-              </Step>
-            );
-          })}
-        </Stepper>
-        {activeStep === steps.length ? (
-          <>
-            <Typography sx={{ mt: 2, mb: 1 }}>
-              All steps completed - you&apos;re finished
-            </Typography>
-            <div sx={{ display: "flex", flexDirection: "row", pt: 2 }}>
-              <div sx={{ flex: "1 1 auto" }} />
-              <Button onClick={handleReset}>Reset</Button>
-            </div>
-          </>
-        ) : (
-          <>
-            <Container sx={{ color: "#000" }}>
-              {ActiveStepComponent()}
-            </Container>
-
+            })}
+          </Stepper>
+          {activeStep === steps.length ? (
+            <>
+              <Typography sx={{ mt: 2, mb: 1 }}>
+                All steps completed - you&apos;re finished
+              </Typography>
+              <div sx={{ display: "flex", flexDirection: "row", pt: 2 }}>
+                <div sx={{ flex: "1 1 auto" }} />
+                <Button onClick={handleReset}>Reset</Button>
+              </div>
+            </>
+          ) : (
+            <>
+              <Container sx={{ color: "#000" }}>
+                {ActiveStepComponent()}
+              </Container>
 
               {/* BOTTOM BUTTONS */}
 
