@@ -1,20 +1,24 @@
 {
   "projects": [
     {
-      "id": "1a",
-      "name": "Project 1",
+      "name": "hackathon",
       "location": "Berlin",
-      "progress": [5, 10],
-      "openPositions": ["Developer", "QA"],
-      "techStack": ["react", "node", "typescript"],
+      "field": "chemical",
+      "progress": 40,
+      "techStack": ["vuejs", "django", "python"],
       "partners": ["IBM", "Intel"],
-      "status": "Running"
+      "status": "string",
+      "description": "switching backend to django",
+      "openPositions": ["Developer", "QA"],
+      "projectInfo": { "Figma": "", "Github": "" },
+      "startingDate": "1st jan 2022",
+      "duration": "5 months"
     },
     {
       "id": "1b",
       "name": "Project 2",
       "location": "Madrid",
-      "progress": [0, 10],
+      "progress": 45,
       "openPositions": ["Developer", "Developer", "QA"],
       "techStack": ["vuejs", "flask", "python"],
       "partners": ["El Zorro"],
@@ -24,7 +28,7 @@
       "id": "1c",
       "name": "Project 3",
       "location": "Madrid",
-      "progress": [2, 5],
+      "progress": 60,
       "openPositions": ["Developer", "Developer", "QA"],
       "techStack": ["vuejs", "django", "python"],
       "partners": ["El Zorro"],
