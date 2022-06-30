@@ -11,7 +11,7 @@
   "rules": {
     "no-restricted-syntax": ["error"],
     "no-console": "off",
-
+    "prefer-destructuring": ["error", { "object": true, "array": false }],
     "linebreak-style": ["error", "unix"],
     "import/no-unresolved": "off"
   }
