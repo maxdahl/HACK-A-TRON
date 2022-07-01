@@ -22,7 +22,7 @@ const steps = [
   "General Information",
   "Project Timeline",
   "Client Details",
-  "Partne Details",
+  "Partner Details",
   "Project Description",
 ];
 
@@ -123,8 +123,8 @@ export default function AddProject() {
                   varient="outlined"
                   placeholder="Project Name ..."
                   id="projectName"
+                  name="projectName"
                   size="medium"
-                  name="name"
                   onChange={(e) => {
                     formValue.name = e.target.value;
                     console.log(formValue);
@@ -146,11 +146,11 @@ export default function AddProject() {
               </Grid>
               <Grid item lg={6}>
                 <TextField
-                  name="location"
                   fullWidth
                   varient="outlined"
                   placeholder="Location..."
                   id="location"
+                  name="location"
                   onChange={(e) => {
                     formValue.location = e.target.value;
                     console.log(formValue);
@@ -163,6 +163,7 @@ export default function AddProject() {
                   varient="outlined"
                   placeholder="open Positions ..."
                   id="openPosition"
+                  name="openPosition"
                   onChange={(e) => {
                     formValue.openPosition = e.target.value;
                     console.log(formValue);
@@ -175,6 +176,7 @@ export default function AddProject() {
                   varient="outlined"
                   placeholder="Tech Stack ..."
                   id="techStack"
+                  name="techStack"
                   onChange={(e) => {
                     formValue.techStack = e.target.value;
                     console.log(formValue);
@@ -256,6 +258,7 @@ export default function AddProject() {
                   varient="outlined"
                   placeholder="Client Name ..."
                   id="clientName"
+                  name="clientName"
                   size="medium"
                   onChange={(e) => {
                     formValue.clientName = e.target.value;
@@ -269,6 +272,7 @@ export default function AddProject() {
                   varient="outlined"
                   placeholder="Phone ..."
                   id="category"
+                  name="category"
                   onChange={(e) => {
                     formValue.clientPhone = e.target.value;
                     console.log(formValue);
@@ -374,6 +378,7 @@ export default function AddProject() {
                   varient="outlined"
                   placeholder="Project Description ..."
                   id="clientName"
+                  name="clientName"
                   size="medium"
                   multiline
                   rows={4}
@@ -439,11 +444,12 @@ export default function AddProject() {
             {activeStep === steps.length ? (
               <>
                 <Typography sx={{ mt: 2, mb: 1 }}>
-                  All steps completed - you&apos;re finished
+                  This project looks similar to the following. Are you sure you
+                  want to create it?
                 </Typography>
                 <div sx={{ display: "flex", flexDirection: "row", pt: 2 }}>
                   <div sx={{ flex: "1 1 auto" }} />
-                  <Button onClick={handleReset}>Reset</Button>
+                  <Button onClick={handleReset}>Yes, create project!</Button>
                 </div>
               </>
             ) : (
