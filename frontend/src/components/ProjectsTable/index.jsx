@@ -1,7 +1,6 @@
 import Navbar from "@components/Navbar/Navbar";
 import LinearProgress from "@mui/material/LinearProgress";
 import TextField from "@mui/material/TextField";
-import ProjectCard from "@pages/projectCard/ProjectCard";
 import "./index.css";
 
 import { useState } from "react";
@@ -31,7 +30,6 @@ function ProjectsTable() {
     useRecoilState(projectsFilterAtom);
 
   const [nameValue, setNameValue] = useState("");
-  const [currentProject, setCurrentProject] = useState(null);
 
   function updateFilter(key, value) {
     if (key === "name") {
@@ -91,14 +89,7 @@ function ProjectsTable() {
         if (key === "name") {
           value = (
             // eslint-disable-next-line
-            <Link
-              to=""
-              onClick={() => {
-                setCurrentProject(project);
-              }}
-            >
-              {project.name}
-            </Link>
+            <Link to="/project">{project.name}</Link>
           );
         } else if (key === "progress") {
           value = (
@@ -114,17 +105,6 @@ function ProjectsTable() {
     }
 
     data.push(row);
-  }
-
-  if (currentProject !== null) {
-    return (
-      <ProjectCard
-        project={currentProject}
-        onClose={() => {
-          setCurrentProject(null);
-        }}
-      />
-    );
   }
 
   return (
