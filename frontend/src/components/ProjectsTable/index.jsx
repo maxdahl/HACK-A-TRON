@@ -1,7 +1,6 @@
 import Navbar from "@components/Navbar/Navbar";
 import LinearProgress from "@mui/material/LinearProgress";
 import TextField from "@mui/material/TextField";
-import "./index.css";
 
 import { useState } from "react";
 import { MultiSelect } from "react-multi-select-component";
@@ -10,6 +9,7 @@ import { useRecoilState, useRecoilValue } from "recoil";
 import PageHeader from "@components/AddProject/order/PageHeader";
 import PageTitleWrapper from "@components/AddProject/order/PageTitleWrapper";
 
+import "./index.css";
 import {
   projectsHeaderLabels,
   withFilter,
@@ -113,7 +113,7 @@ function ProjectsTable() {
         <PageHeader location="Pojects Overview" />
       </PageTitleWrapper>
       <div className="project-card">
-        <div className="container-project-card">
+        <div className="container-table">
           <AnTable headers={headers} data={data} />
         </div>
       </div>
