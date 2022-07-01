@@ -8,6 +8,7 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { RecoilRoot } from "recoil";
 
+import SimilarProjectsTable from "@components/SimilarProjectsTable";
 import ProjectCard from "@pages/projectCard/ProjectCard";
 /* import PageHeader from "@components/PageLayout/PageHeader";
  */
@@ -44,6 +45,7 @@ function App() {
         <Routes>
           <Route path="/" element={<ProjectsTable />} />
           <Route path="/project" element={<ProjectCard project={project} />} />
+          <Route path="/similar-projects" element={<SimilarProjectsTable />} />
           <Route path="/addproject" element={<AddProject />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
