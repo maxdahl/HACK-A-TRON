@@ -10,24 +10,22 @@ function AnTable(props) {
   const { data, headers } = props;
 
   return (
-    <>
-      <Table>
-        <AnTableHead headers={headers} key="an-table-head" />
+    <Table>
+      <AnTableHead headers={headers} key="an-table-head" />
 
-        <TableBody>
-          {data.map((row, index) => (
-            <AnTableRow
-              cellData={row.cellData}
-              isOpen={row.isOpen}
-              childRows={row.childRows}
-              toggleOpen={row.toggleOpen}
-              hasChildren={row.hasChildren}
-              key={row.key ?? `antr-${index}`}
-            />
-          ))}
-        </TableBody>
-      </Table>
-    </>
+      <TableBody>
+        {data.map((row, index) => (
+          <AnTableRow
+            cellData={row.cellData}
+            isOpen={row.isOpen}
+            childRows={row.childRows}
+            toggleOpen={row.toggleOpen}
+            hasChildren={row.hasChildren}
+            key={row.key ?? `antr-${index}`}
+          />
+        ))}
+      </TableBody>
+    </Table>
   );
 }
 
