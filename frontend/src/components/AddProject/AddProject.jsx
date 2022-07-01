@@ -10,6 +10,7 @@ import Stepper from "@mui/material/Stepper";
 import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
 import Grid from "@mui/material/Grid";
+import { Link } from "react-router-dom";
 import * as React from "react";
 import { StepContent } from "@mui/material";
 import { makeStyles } from "@mui/styles";
@@ -93,7 +94,8 @@ export default function AddProject() {
     });
   };
 
-  const handleReset = () => {
+  const handleReset = (e) => {
+    e.pre;
     setActiveStep(0);
   };
 
@@ -449,7 +451,10 @@ export default function AddProject() {
                 </Typography>
                 <div sx={{ display: "flex", flexDirection: "row", pt: 2 }}>
                   <div sx={{ flex: "1 1 auto" }} />
-                  <Button onClick={handleReset}>Yes, create project!</Button>
+
+                  <Link to="/">
+                    <Button>Yes, create project!</Button>
+                  </Link>
                 </div>
               </>
             ) : (

@@ -2,19 +2,20 @@ import Navbar from "@components/Navbar/Navbar";
 import LinearProgress from "@mui/material/LinearProgress";
 import TextField from "@mui/material/TextField";
 
-import { useState } from "react";
+import PageHeader from "@components/AddProject/order/PageHeader";
+import PageTitleWrapper from "@components/AddProject/order/PageTitleWrapper";
+import Box from "@mui/material/Box";
+import { useEffect, useState } from "react";
 import { MultiSelect } from "react-multi-select-component";
 import { Link } from "react-router-dom";
 import { useRecoilState, useRecoilValue } from "recoil";
-import PageHeader from "@components/AddProject/order/PageHeader";
-import PageTitleWrapper from "@components/AddProject/order/PageTitleWrapper";
 
-import "./index.css";
 import {
   projectsHeaderLabels,
   withFilter,
   withTableHeaderValues,
 } from "@recoil/projects";
+import "./index.css";
 
 import projectsFilterAtom from "@recoil/projectsTableFilter";
 
@@ -30,6 +31,7 @@ function ProjectsTable() {
     useRecoilState(projectsFilterAtom);
 
   const [nameValue, setNameValue] = useState("");
+  const [testBool, setTestBool] = useState(false);
 
   function updateFilter(key, value) {
     if (key === "name") {
@@ -106,7 +108,11 @@ function ProjectsTable() {
 
     data.push(row);
   }
-
+  useEffect(() => {
+    setTimeout(() => {
+      setTestBool(true);
+    }, 2000);
+  });
   return (
     <>
       <PageTitleWrapper>
@@ -114,7 +120,13 @@ function ProjectsTable() {
       </PageTitleWrapper>
       <div className="project-card">
         <div className="container-table">
-          <AnTable headers={headers} data={data} />
+          {testBool === true ? (
+            <AnTable headers={headers} data={data} />
+          ) : (
+            <Box sx={{ width: "100%" }}>
+              <LinearProgress />
+            </Box>
+          )}
         </div>
       </div>
       <Navbar />
