@@ -134,6 +134,7 @@ export default function ApplyToProjectModal({ project }) {
       <Fab
         style={floating}
         color="secondary"
+        sx={{ backgroundColor: "#e77620" }}
         aria-label="add"
         onClick={handleOpen}
       >

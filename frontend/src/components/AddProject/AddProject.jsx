@@ -16,6 +16,7 @@ import { StepContent } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import PageTitleWrapper from "./order/PageTitleWrapper";
 import PageHeader from "./order/PageHeader";
+import SimilarProjects from "@components/SimilarProjectsTable";
 
 import Navbar from "@components/Navbar/Navbar";
 import "./AddProject.css";
@@ -163,7 +164,7 @@ export default function AddProject() {
                 <TextField
                   fullWidth
                   varient="outlined"
-                  placeholder="open Positions ..."
+                  placeholder="Open Positions ..."
                   id="openPosition"
                   name="openPosition"
                   onChange={(e) => {
@@ -449,10 +450,11 @@ export default function AddProject() {
                   This project looks similar to the following. Are you sure you
                   want to create it?
                 </Typography>
+                <SimilarProjects />
                 <div sx={{ display: "flex", flexDirection: "row", pt: 2 }}>
                   <div sx={{ flex: "1 1 auto" }} />
 
-                  <Link to="/">
+                  <Link to="/project">
                     <Button>Yes, create project!</Button>
                   </Link>
                 </div>

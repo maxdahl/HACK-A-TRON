@@ -6,11 +6,9 @@ import { useState } from "react";
 import { MultiSelect } from "react-multi-select-component";
 import { Link } from "react-router-dom";
 import { useRecoilState, useRecoilValue } from "recoil";
-import PageHeader from "@components/AddProject/order/PageHeader";
-import PageTitleWrapper from "@components/AddProject/order/PageTitleWrapper";
 
-import "./index.css";
 import { projectsHeaderLabels, withTableHeaderValues } from "@recoil/projects";
+import "./index.css";
 
 import projectsFilterAtom from "@recoil/projectsTableFilter";
 
@@ -145,9 +143,6 @@ function SimilarProjectsTable() {
 
   return (
     <>
-      <PageTitleWrapper>
-        <PageHeader location="Pojects Overview" />
-      </PageTitleWrapper>
       <div className="project-card">
         <div className="container-table">
           <AnTable headers={headers} data={data} />

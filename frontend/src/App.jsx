@@ -30,8 +30,9 @@ function App() {
     progress: 20,
     techStack: ["react", "node", "typescript"],
     partners: ["IBM", "Intel"],
-    status: "string",
-    description: "relational database for all clients",
+    status: "Development",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer aliquet finibus quam, a feugiat nunc volutpat sed. Vivamus in tellus egestas, feugiat sapien non, volutpat tellus. Vestibulum odio nulla, rhoncus quis velit eu, scelerisque fringilla eros. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Aliquam sed dictum felis. Etiam malesuada neque sit amet odio pellentesque sagittis. Aliquam consequat posuere ornare. ",
     openPositions: ["Developer", "QA"],
     projectInfo: { Figma: "", Github: "" },
     startingDate: "1st jan 2022",
